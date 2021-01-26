@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/queries.css?v=<?php echo time(); ?>">
 </head>
 <body>
-<?php include "connectDb.php";
+<?php include "../includes/connectDb.php";
     
 if(isset($_POST['createaccount'])){
     $fullname = $_POST['fullname'];

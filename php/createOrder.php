@@ -1,4 +1,4 @@
-<?php include "connectDb.php"; ?>
+<?php include "../includes/connectDb.php"; ?>
 <?php
 if(isset($_GET['buyer'], $_GET['finalPrice'], $_GET['items'], )){
     $buyerName = $_GET['buyer'];

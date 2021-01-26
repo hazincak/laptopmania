@@ -1,5 +1,5 @@
 
-<?php include "connectDb.php";
+<?php include "../includes/connectDb.php";
 
 if(isset($_GET['q'], $_GET['function'])) 
 {
@@ -32,29 +32,29 @@ function randomCarouselItem(){
     $sql = "SELECT laptop_name, laptop_price, old_price FROM laptops WHERE laptop_type = 'Discounted laptop'";
     $result = mysqli_query($connection,$sql);
     
-    while($row = mysqli_fetch_assoc ($result)){
-        $itemsArray[$arrayIndex] = $row;
-        $arrayIndex++;
-        }
+//     while($row = mysqli_fetch_assoc ($result)){
+//         $itemsArray[$arrayIndex] = $row;
+//         $arrayIndex++;
+//         }
 
-        $randomArrayIndex = rand(0,count($itemsArray)-1); 
-        $randomItem = $itemsArray[$randomArrayIndex];
-        $vatExcludedPrice = vatCalculator($randomItem['laptop_price'], $excludedVat);
+//         $randomArrayIndex = rand(0,count($itemsArray)-1); 
+//         $randomItem = $itemsArray[$randomArrayIndex];
+//         $vatExcludedPrice = vatCalculator($randomItem['laptop_price'], $excludedVat);
     
-    echo "
-    <h1 class='display-4'>SUMMER OFFER</h1>
-        <p class='lead'>Pick up your electronical companion for discounted price.</p>
-            <span class='d-block p-2'> 
-              <h4><b>". $randomItem['laptop_name'] ."</b></h4>
-              <hr>
-              <div class='d-inline-flex flex-row justify-content-around '>
-              <div class='p-2 align-self-start'><h3>WOW!</h3></div>
-              <div class='p-2 align-self-center'><h3 class='old-price'>WAS: €". $randomItem['old_price'] ."</h3></div>
-              <div class='p-2 align-self-end'><h3>NOW: €". $randomItem['laptop_price'] ."</h3></div>
-              <img src='img/laptops/". $randomItem['laptop_name'] .".jpg' class='laptop-img-jumbotron'>
-              </div>
-            </span>
-   ";
+//     echo "
+    // <h1 class='display-4'>SUMMER OFFER</h1>
+    //     <p class='lead'>Pick up your electronical companion for discounted price.</p>
+    //         <span class='d-block p-2'> 
+    //           <h4><b>". $randomItem['laptop_name'] ."</b></h4>
+    //           <hr>
+    //           <div class='d-inline-flex flex-row justify-content-around '>
+    //           <div class='p-2 align-self-start'><h3>WOW!</h3></div>
+    //           <div class='p-2 align-self-center'><h3 class='old-price'>WAS: €". $randomItem['old_price'] ."</h3></div>
+    //           <div class='p-2 align-self-end'><h3>NOW: €". $randomItem['laptop_price'] ."</h3></div>
+    //           <img src='img/laptops/". $randomItem['laptop_name'] .".jpg' class='laptop-img-jumbotron'>
+    //           </div>
+    //         </span>
+//    ";
 }
 function shopAutocomplete(){
     global $q;

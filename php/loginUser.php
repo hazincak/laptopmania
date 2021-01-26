@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 </head>
-<?php include "connectDb.php";?>
+<?php include "../includes/connectDb.php";?>
 
 <?php   
 header('Content-Type: application/json');
