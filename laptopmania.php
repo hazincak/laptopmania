@@ -22,6 +22,7 @@ if (!isset($_SESSION)){
   include "includes/header.php";   
   include "includes/navbar.php"; 
   include "includes/connectDb.php"; 
+  include "includes/spinner.php";
   include "sharedFunctions/vatCalculator.php"; ?>
 
     <!-- Title (navbar) -->
@@ -109,11 +110,6 @@ if (!isset($_SESSION)){
     let shoppingCart = [];
     let totalQuantity = document.querySelectorAll('js--total-quantity').innerText;
     totalQuantity = shoppingCart.length;
-    
-   
-
-    //empty arrays object representing a shopping cart
-    
     
     //JS boolean tracking if the user is logged in. The JS value has been created for efficient DOM manipulation
     let logged = '<?php echo json_encode($session_logged);?>';

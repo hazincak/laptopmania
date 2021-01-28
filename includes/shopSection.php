@@ -34,6 +34,7 @@
 $(document).ready(function(){
     let query
     $('.option').click(function(){
+        $('#overlay').fadeIn();
         query = $(this).data('value'); 
         console.log(query)
     $.ajax({
@@ -42,15 +43,19 @@ $(document).ready(function(){
     data:{
         q:  `${query}`,
     },
+
     success: function(response){
+        setTimeout(function () {
+        $('#overlay').fadeOut();        
         $('#item-capsule').html(null)
         const products = JSON.parse(response);
+        
         populateProducts(products)
-    },
+    }, 1000,)},
+
     error: function(){
 
     }
-
     })
 });
 });
