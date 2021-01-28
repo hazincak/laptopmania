@@ -20,10 +20,10 @@ if (!isset($_SESSION)){
 
 
   include "includes/header.php";   
-  include "includes/navbar.php"; 
   include "includes/connectDb.php"; 
   include "includes/spinner.php";
-  include "sharedFunctions/vatCalculator.php"; ?>
+  include "sharedFunctions/vatCalculator.php";
+  include "includes/navbar.php";  ?>
 
     <!-- Title (navbar) -->
         <section class="title">
@@ -170,60 +170,7 @@ if (!isset($_SESSION)){
             }, {
             offset: '80px'
         });
-    
 
-
-    
-    
-    //Populates dropdown shopping cart on the "add to cart" button
-    //Increasing shoppings cart total price and a badge value representing number of items in the shopping cart
-        $("#item-capsule").on("click", ".js--add-cart", function() {
-        let laptopName = ($(this).closest('span').find('.js--laptop-name').text());
-        let laptopPrice = ($(this).closest('span').find(".js--laptop-price").text());
-        let slicedLaptopPrice = parseFloat(laptopPrice.substring(1));
-        totalPrice += slicedLaptopPrice;
-        $('.js--total-price').text(`€${totalPrice.toFixed(2)}`);
-        
-        shoppingCart.push({name: laptopName, price: slicedLaptopPrice});
-        totalQuantity = shoppingCart.length;
-        addToPersistentBasket(shoppingCart);
-        $('.js--total-quantity').text(totalQuantity);
-            $( ".js--dropdown-cart" ).append( 
-           
-                `<div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
-                    <p class='font-weight-bold cart-text js--laptop-name'>${laptopName}</p>\
-                    <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
-                        <img src='img/laptops/${laptopName}.jpg' class='laptop-img-cart'>\
-                        <div class='p-2 flex-fill'><p class='font-weight-bolder cart-text js--price '>${laptopPrice}</p></span></div>\
-                        <button class='btn btn-danger fa fa-close cart-item js--close-button'></button>\
-                    </div>\
-                </div>`
-            );
-        });
-
-  
- 
-    //Removes the item from the dropdown shopping cart on click
-    //Removes the same item from the "shoppingCart" arrays object
-    //Also decreases the value which is representing the total number of the items in the dropdown shopping cart
-        
-        $(".js--dropdown-cart").on("click", ".js--close-button", function() {
-                let laptopPrice = ($(this).closest('div').find('.js--price').text());
-                let laptopName = ($(this).closest('div.js--shopping-cart-pill').find('.js--laptop-name').text());
-                let slicedLaptopPrice = parseFloat(laptopPrice.substring(1));
-                totalPrice -= slicedLaptopPrice;
-                $('.js--total-price').text(`€${totalPrice.toFixed(2)}`);
-
-                var index = shoppingCart.map(function(e) { return e.name; }).indexOf(laptopName);
-                shoppingCart.splice(index, 1);
-                totalQuantity = shoppingCart.length;
-                $('.js--total-quantity').text(totalQuantity);
-
-                $(this).closest('.js--shopping-cart-pill').remove();
-        });
-
-  
-    
     //Function pushing relevant purchase information to the "createOrder.php" file which is pushing data to SQL server database.
     //On success current php session end and the page is reloaded. 
     $("nav").on("click", ".js--checkout-button", function(){
@@ -260,9 +207,9 @@ if (!isset($_SESSION)){
     });    
     });
 
-    function addToPersistentBasket(shoppingCart){
-          localStorage.setItem('cart', JSON.stringify(shoppingCart))
-        }
+    // function addToPersistentBasket(shoppingCart){
+    //       localStorage.setItem('cart', JSON.stringify(shoppingCart))
+    //     }
 </script>
 
     
