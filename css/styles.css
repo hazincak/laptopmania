@@ -91,6 +91,7 @@ p{
 }
 
 
+
 /* Title section */
 .title{
     background-color: var(--page-color-4);
@@ -192,12 +193,15 @@ p{
 }
 
 .discount-carousel-item{
-    padding: 5% 10% ;
+    padding: 5% 7% ;
+    background-color: #fff;
+    border-radius: 15px;
 }
 
-.carousel-product{
-    min-height: 60vh;
+.carousel-item{
+    padding: 7% 15%;
 }
+
 
 .discount-section .container-fluid{
     padding: 3% 15% 3%;
@@ -218,7 +222,6 @@ p{
   }
 .list-group {
     padding: 1rem;
-    border: 3px solid var(--page-color-4);
     border-radius: 30px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
@@ -307,9 +310,6 @@ width: 20%;
     -o-border-radius: 100%;
       margin: 20px;
  }
- .carousel-item{
-    padding: 7% 15%;
-}
 
 /* footer section */
 .footer{

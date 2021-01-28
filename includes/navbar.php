@@ -15,14 +15,16 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <form action="php/loginUser.php" method="post">
-                      <input type="text" name="login-username" class="form-control js--login-username" placeholder="Username">
+                      <input type="text" name="login-username" class="form-control js--login-username <?php echo (!empty($_SESSION['username_err'])) ? 'is-invalid' : ''; ?>" placeholder="Username">
+                      <span class='invalid-feedback'><?php echo $_SESSION['username_err'] ?></span>
                       <div class="dropdown-divider"></div>
-                      <input type="password" name="login-password" class="form-control js--login-password" placeholder="Password">
+                      <input type="password" name="login-password" class="form-control js--login-password <?php echo (!empty($_SESSION['password_err'])) ? 'is-invalid' : ''; ?>" placeholder="Password">
+                      <span class='invalid-feedback'><?php echo $_SESSION['password_err'] ?></span>
                       <div class="dropdown-divider"></div>
                       <input class="btn btn-secondary btn-block js--login-account-button" type="submit" name="logintoaccount" value="Login">
                       <div class="dropdown-divider"></div>
                     </form> 
-                    <button class="btn btn-outline-light btn-block js--create-account-button">Create account</button> 
+                    <a href="register.php"><button class="btn btn-outline-light btn-block js--create-account-button">Create account</button></a> 
               </li>
         </ul>   
     </div>
@@ -36,7 +38,7 @@
                       <div class="p-2"><i class="fa fa-shopping-cart cart-icon"></i><span class="badge js--total-quantity"></span></div>
                       <div class="p-2"><span>Total: </span><span class="js--total-price"></span></div>
                     </div>
-                      <div class="js--dropdown-car">
+                      <div class="js--dropdown-cart">
                       </div>  
                     <div class="d-flex flex-row">
                     <button type="button" class="btn btn-success btn-block js--checkout-button">Check out<i class="far fa-credit-card"></i></button>

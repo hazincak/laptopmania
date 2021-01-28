@@ -8,8 +8,6 @@
 
 <?php   
 header('Content-Type: application/json');
-
-
     if(isset($_POST['logintoaccount'])){
         $_SESSION['logged'] = false;
 
@@ -41,13 +39,21 @@ header('Content-Type: application/json');
                 $db_expiration_date = $row['expiration_date'];
             }
 
-        if($cleanLoginUsername !== $db_user_name && $cleanLoginPassword !== $db_user_password){
+        if($cleanLoginUsername == $db_user_name && $cleanLoginPassword !== $db_user_password){
             header("Location: ../laptopmania.php");
             $_SESSION['logged'] = false;
+            $_SESSION['password_err'] = 'Invalid password';
+            $_SESSION['username_err'] = '';
 
          
-        } else if ($cleanLoginUsername == $db_user_name && $cleanLoginPassword == $db_user_password){
+        }else if($cleanLoginUsername !== $db_user_name && $cleanLoginPassword == $db_user_password){
             header("Location: ../laptopmania.php");
+            $_SESSION['logged'] = false;
+            $_SESSION['password_err'] = '';
+            $_SESSION['username_err'] = 'Invalid username';
+        }else if ($cleanLoginUsername == $db_user_name && $cleanLoginPassword == $db_user_password){
+            header("Location: ../laptopmania.php");
+            header("Location: ../checkout.php");
             
             $_SESSION['userid'] = $db_user_id;
             $_SESSION['fullname'] = $db_full_name;
@@ -63,6 +69,8 @@ header('Content-Type: application/json');
             $_SESSION['cardnumber'] = $db_card_number;
             $_SESSION['expdate'] = $db_expiration_date;
             
+            $_SESSION['password_err'] = '';
+            $_SESSION['username_err'] = '';
             
             $_SESSION['logged'] = true;
 

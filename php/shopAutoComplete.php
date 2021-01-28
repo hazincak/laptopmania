@@ -1,62 +1,13 @@
 
-<?php include "../includes/connectDb.php";
+<?php 
 
-if(isset($_GET['q'], $_GET['function'])) 
+include "../includes/connectDb.php";
+include "../sharedFunctions/vatCalculator.php";
+
+if(isset($_GET['q'])) 
 {
-      $q = $_GET['q'];
-      $functionCalled = $_GET['function'];
-      
+      $q = $_GET['q']; 
 }
-
-$excludedVat = 0.77;
-
-if($functionCalled == "randomCarouselItem"){
-    randomCarouselItem();
-}else if ($functionCalled == "shopAutocomplete"){
-    shopAutocomplete();
-}else {
-    echo "not working";
-}
-
-function vatCalculator($excludedVat, float $price){
-    $priceResult = $price * $excludedVat;
-    return number_format((float)$priceResult, 2, '.', '');
-}
-
-function randomCarouselItem(){
-    
-    global $connection;
-    global $excludedVat;
-    $arrayIndex = 0;
-    $itemsArray[] = array(); 
-    $sql = "SELECT laptop_name, laptop_price, old_price FROM laptops WHERE laptop_type = 'Discounted laptop'";
-    $result = mysqli_query($connection,$sql);
-    
-//     while($row = mysqli_fetch_assoc ($result)){
-//         $itemsArray[$arrayIndex] = $row;
-//         $arrayIndex++;
-//         }
-
-//         $randomArrayIndex = rand(0,count($itemsArray)-1); 
-//         $randomItem = $itemsArray[$randomArrayIndex];
-//         $vatExcludedPrice = vatCalculator($randomItem['laptop_price'], $excludedVat);
-    
-//     echo "
-    // <h1 class='display-4'>SUMMER OFFER</h1>
-    //     <p class='lead'>Pick up your electronical companion for discounted price.</p>
-    //         <span class='d-block p-2'> 
-    //           <h4><b>". $randomItem['laptop_name'] ."</b></h4>
-    //           <hr>
-    //           <div class='d-inline-flex flex-row justify-content-around '>
-    //           <div class='p-2 align-self-start'><h3>WOW!</h3></div>
-    //           <div class='p-2 align-self-center'><h3 class='old-price'>WAS: €". $randomItem['old_price'] ."</h3></div>
-    //           <div class='p-2 align-self-end'><h3>NOW: €". $randomItem['laptop_price'] ."</h3></div>
-    //           <img src='img/laptops/". $randomItem['laptop_name'] .".jpg' class='laptop-img-jumbotron'>
-    //           </div>
-    //         </span>
-//    ";
-}
-function shopAutocomplete(){
     global $q;
     global $connection;
     global $excludedVat;
@@ -96,9 +47,5 @@ while($row = mysqli_fetch_array($result)){
         </span>";
              }
         }
-    }
-
-    
-  
 mysqli_close($connection);
 ?>
