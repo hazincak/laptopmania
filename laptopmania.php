@@ -148,28 +148,28 @@ if (!isset($_SESSION)){
 
         
     
-    //jQuery animations on scroll
-        // $('.js--title-shop-button').click(function(){
-        // $('html, body').animate({scrollTop: $('.js--section-shop').offset().top}, 1000);
-        // getRequest("SELECT * FROM laptops","#item-capsule","shopAutocomplete");
-        // });
-        // $('.js--title-review-button').click(function(){
-        // $('html, body').animate({scrollTop: $('.js--section-review').offset().top}, 1000);
-        // });
+    // jQuery animations on scroll
+        $('.js--title-shop-button').click(function(){
+        $('html, body').animate({scrollTop: $('.js--section-shop').offset().top}, 1000);
+        getRequest("SELECT * FROM laptops","#item-capsule","shopAutocomplete");
+        });
+        $('.js--title-review-button').click(function(){
+        $('html, body').animate({scrollTop: $('.js--section-review').offset().top}, 1000);
+        });
         // $('.js--section-shop').waypoint(function(direction){
         // if(direction == "down"){
         //     getRequest("SELECT * FROM laptops","#item-capsule","shopAutocomplete");
         // }
         // });
-        // $('.js--section-discount').waypoint(function(direction){
-        // if(direction == "down"){
-        //     $('nav').addClass('sticky');
-        // }else{
-        //     $('nav').removeClass('sticky');
-        //     }
-        //     }, {
-        //     offset: '80px'
-        // });
+        $('.js--section-discount').waypoint(function(direction){
+        if(direction == "down"){
+            $('nav').addClass('sticky');
+        }else{
+            $('nav').removeClass('sticky');
+            }
+            }, {
+            offset: '80px'
+        });
     
 
 

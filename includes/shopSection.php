@@ -32,8 +32,28 @@
 
 
 $(document).ready(function(){
-    let query
-    $('.option').click(function(){
+    $.ajax({
+    url: "php/getProducts.php",
+    type:"GET",
+    data:{
+        q:  `SELECT * FROM laptops`,
+        },
+
+    success: function(response){    
+        $('#item-capsule').html(null)
+        const products = JSON.parse(response);
+        populateProducts(products)
+        },
+
+    error: function(){
+
+        }
+    });
+});
+    
+    
+$('.option').click(function(){
+        let query
         $('#overlay').fadeIn();
         query = $(this).data('value'); 
         console.log(query)
@@ -58,7 +78,7 @@ $(document).ready(function(){
     }
     })
 });
-});
+
 
 function populateProducts(items){
     for (item of items){
