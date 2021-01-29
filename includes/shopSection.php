@@ -123,7 +123,8 @@ function populateProducts(items){
         cart.push(basketItem);
         localStorage.setItem('cart', JSON.stringify(cart));
 
-        let totalPrice;
+
+        totalPrice;
         currentTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
         if(currentTotalPrice !== null){
             totalPrice = currentTotalPrice;
@@ -131,29 +132,26 @@ function populateProducts(items){
         }else{
             totalPrice = item_price;
         }
-        localStorage.setItem('totalPrice', JSON.stringify(totalPrice));    
-        });
-   
-//Populates dropdown shopping cart on the "add to cart" button
-    //Increasing shoppings cart total price and a badge value representing number of items in the shopping cart
-    $("#item-capsule").on("click", ".js--add-cart", function() {
-        let laptopName = ($(this).closest('span').find('.js--laptop-name').text());
-        let laptopPrice = ($(this).closest('span').find(".js--laptop-price").text());
-        let slicedLaptopPrice = parseFloat(laptopPrice.substring(1));
-       
+        localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
+        
+        //Adding total price to DOM
         $('.js--total-price').text(`€${totalPrice.toFixed(2)}`);
-        $('.js--total-quantity').text(totalQuantity);
-            $( ".js--dropdown-cart" ).append( 
-           
-                `<div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
-                    <p class='font-weight-bold cart-text js--laptop-name'>${laptopName}</p>\
-                    <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
-                        <img src='img/laptops/${laptopName}.jpg' class='laptop-img-cart'>\
-                        <div class='p-2 flex-fill'><p class='font-weight-bolder cart-text js--price '>${laptopPrice}</p></span></div>\
-                        <button class='btn btn-danger fa fa-close cart-item js--close-button'></button>\
-                    </div>\
-                </div>`
-            );
-        });
+        
+        //Adding cart item to DOM
+        $( ".js--dropdown-cart" ).append( 
+           `<div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
+               <p class='font-weight-bold cart-text js--laptop-name'>${item_name}</p>\
+               <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
+                   <img src='img/laptops/${item_name}.jpg' class='laptop-img-cart'>\
+                   <div class='p-2 flex-fill'><p class='font-weight-bolder cart-text js--price '>€${item_price}</p></span></div>\
+                   <button class='btn btn-danger fa fa-close cart-item js--close-button' data-item_name="${item_name}" data-item_id="${item_id}" data-item_price="${item_price}"></button>\
+               </div>\
+           </div>`
+       );
 
+       //Updating amount of the items in basket
+        productsInBasket = JSON.parse(localStorage.getItem('cart'));
+        cartLength = productsInBasket.length;
+        $('.js--total-quantity').html(cartLength)
+        });
 </script>

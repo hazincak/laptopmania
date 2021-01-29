@@ -57,70 +57,54 @@ let cartLength;
 let totalPrice;
 $(document).ready(function(){
   productsInBasket = JSON.parse(localStorage.getItem('cart'));
-  cartLength = productsInBasket.length;
-  $('.js--total-quantity').html(cartLength)
+  productsInBasket ? cartLength = productsInBasket.length : cartLength = 0;
+  $('.js--total-quantity').text(`${cartLength}`)
 
   totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
-  $('.js--total-price').html(`€${totalPrice}`)
+  $('.js--total-price').text(`${totalPrice ? '€' + totalPrice : '€0,00'}`)
   
-  for (product of productsInBasket){
+  if(productsInBasket){
+    for (product of productsInBasket){
         $('.js--dropdown-cart ').append(`
         <div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
             <p class='font-weight-bold cart-text js--laptop-name'>${product.item_name}</p>\
             <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
                 <img src='img/laptops/${product.item_name}.jpg' class='laptop-img-cart'>\
                 <div class='p-2 flex-fill'><p class='font-weight-bolder cart-text js--price '>€${product.item_price}</p></span></div>\
-                <button class='btn btn-danger fa fa-close cart-item js--close-button'></button>\
+                <button class='btn btn-danger fa fa-close cart-item js--close-button' data-item_name="${product.item_name}" data-item_id="${product.item_id}" data-item_price="${product.item_price}"></button>\
             </div>\
           </div>
          `);
         }
+  }
     })
 
   //Removes the item from the dropdown shopping cart on click
-    //Removes the same item from the "shoppingCart" arrays object
-    //Also decreases the value which is representing the total number of the items in the dropdown shopping cart
-        
+  //Also decreases the value which is representing the total number of the items in the dropdown shopping cart
 $(".js--dropdown-cart").on("click", ".js--close-button", function() {
-    let laptopPrice = ($(this).closest('div').find('.js--price').text());
-    let laptopName = ($(this).closest('div.js--shopping-cart-pill').find('.js--laptop-name').text());
-    let slicedLaptopPrice = parseFloat(laptopPrice.substring(1));
-    totalPrice -= slicedLaptopPrice;
-    $('.js--total-price').text(`€${totalPrice.toFixed(2)}`);
-    var index = shoppingCart.map(function(e) { return e.name; }).indexOf(laptopName);
-    shoppingCart.splice(index, 1);
-    totalQuantity = shoppingCart.length;
-    $('.js--total-quantity').text(totalQuantity);
+    item_name = $(this).data('item_name');
+    item_price = $(this).data('item_price');
+    itemId = $(this).data('item_id');
+    console.log(item_price)
+    
+    //Calculating total price
+    totalPrice = JSON.parse(localStorage.getItem('totalPrice')); 
+    totalPrice = totalPrice - item_price;
+    $('.js--total-price').text(`€${totalPrice == 0 ? '0.00' : totalPrice.toFixed(2)}`);
+    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
+
+    //Removing from local storage
+     productsInBasket = JSON.parse(localStorage.getItem('cart'));
+    let removeIndex = productsInBasket.map(item => item.item_id).indexOf(itemId);
+    productsInBasket.splice(removeIndex, 1);
+    localStorage.setItem('cart', JSON.stringify(productsInBasket));
+    
+    //Removing from DOM
     $(this).closest('.js--shopping-cart-pill').remove();
-  });
+
+    //Updating amount of the items in basket
+    cartLength = productsInBasket.length;
+    $('.js--total-quantity').html(cartLength)
+   });
 </script>
 
-<!-- $("#item-capsule").on("click", "#addToBasket", function(){
-        item_name = $(this).data('item-laptop_name');
-        item_price = $(this).data('item-laptop_price');
-        item_id = $(this).data('item_id');
-        console.log(item_id)
-        basketItem = {
-            'item_id': item_id,
-            'item_name': item_name,
-            'item_price': item_price,
-        }
-
-        let cart = [];
-        currentCart = JSON.parse(localStorage.getItem('cart'));
-        if(currentCart !== null){
-            cart = [...currentCart];
-        }
-        cart.push(basketItem);
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        let totalPrice;
-        currentTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
-        if(currentTotalPrice !== null){
-            totalPrice = currentTotalPrice;
-            totalPrice = totalPrice + item_price;
-        }else{
-            totalPrice = item_price;
-        }
-        localStorage.setItem('totalPrice', JSON.stringify(totalPrice));    
-        }); -->

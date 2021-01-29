@@ -105,11 +105,11 @@ if (!isset($_SESSION)){
 </html>
 
 <script>
-    let totalPrice = document.querySelector('.js--total-price').innerText;
-    totalPrice = 0;
-    let shoppingCart = [];
-    let totalQuantity = document.querySelectorAll('js--total-quantity').innerText;
-    totalQuantity = shoppingCart.length;
+    // let totalPrice = document.querySelector('.js--total-price').innerText;
+    // totalPrice = 0;
+    // let shoppingCart = [];
+    // let totalQuantity = document.querySelectorAll('js--total-quantity').innerText;
+    // totalQuantity = shoppingCart.length;
     
     //JS boolean tracking if the user is logged in. The JS value has been created for efficient DOM manipulation
     let logged = '<?php echo json_encode($session_logged);?>';
@@ -156,11 +156,6 @@ if (!isset($_SESSION)){
         $('.js--title-review-button').click(function(){
         $('html, body').animate({scrollTop: $('.js--section-review').offset().top}, 1000);
         });
-        // $('.js--section-shop').waypoint(function(direction){
-        // if(direction == "down"){
-        //     getRequest("SELECT * FROM laptops","#item-capsule","shopAutocomplete");
-        // }
-        // });
         $('.js--section-discount').waypoint(function(direction){
         if(direction == "down"){
             $('nav').addClass('sticky');
