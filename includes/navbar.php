@@ -51,60 +51,60 @@
 
 <script>
 // js--total-quantity
-let productsInBasket;
-let productsPrice;
-let cartLength;
-let totalPrice;
-$(document).ready(function(){
-  productsInBasket = JSON.parse(localStorage.getItem('cart'));
-  productsInBasket ? cartLength = productsInBasket.length : cartLength = 0;
-  $('.js--total-quantity').text(`${cartLength}`)
+// let productsInBasket;
+// let productsPrice;
+// let cartLength;
+// let totalPrice;
+// $(document).ready(function(){
+//   productsInBasket = JSON.parse(localStorage.getItem('cart'));
+//   productsInBasket ? cartLength = productsInBasket.length : cartLength = 0;
+//   $('.js--total-quantity').text(`${cartLength}`)
 
-  totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
-  $('.js--total-price').text(`${totalPrice ? '€' + totalPrice : '€0,00'}`)
+//   totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
+//   $('.js--total-price').text(`${totalPrice ? '€' + totalPrice : '€0,00'}`)
   
-  if(productsInBasket){
-    for (product of productsInBasket){
-        $('.js--dropdown-cart ').append(`
-        <div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
-            <p class='font-weight-bold cart-text js--laptop-name'>${product.item_name}</p>\
-            <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
-                <img src='img/laptops/${product.item_name}.jpg' class='laptop-img-cart'>\
-                <div class='p-2 flex-fill'><p class='font-weight-bolder cart-text js--price '>€${product.item_price}</p></span></div>\
-                <button class='btn btn-danger fa fa-close cart-item js--close-button' data-item_name="${product.item_name}" data-item_id="${product.item_id}" data-item_price="${product.item_price}"></button>\
-            </div>\
-          </div>
-         `);
-        }
-  }
-    })
+//   if(productsInBasket){
+//     for (product of productsInBasket){
+//         $('.js--dropdown-cart ').append(`
+//         <div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
+//             <p class='font-weight-bold cart-text js--laptop-name'>${product.item_name}</p>\
+//             <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
+//                 <img src='img/laptops/${product.item_name}.jpg' class='laptop-img-cart'>\
+//                 <div class='p-2 flex-fill'><p class='font-weight-bolder cart-text js--price '>€${product.item_price}</p></span></div>\
+//                 <button class='btn btn-danger fa fa-close cart-item js--close-button' data-item_name="${product.item_name}" data-item_id="${product.item_id}" data-item_price="${product.item_price}"></button>\
+//             </div>\
+//           </div>
+//          `);
+//         }
+//   }
+//     })
 
-  //Removes the item from the dropdown shopping cart on click
-  //Also decreases the value which is representing the total number of the items in the dropdown shopping cart
-$(".js--dropdown-cart").on("click", ".js--close-button", function() {
-    item_name = $(this).data('item_name');
-    item_price = $(this).data('item_price');
-    itemId = $(this).data('item_id');
-    console.log(item_price)
+//   //Removes the item from the dropdown shopping cart on click
+//   //Also decreases the value which is representing the total number of the items in the dropdown shopping cart
+// $(".js--dropdown-cart").on("click", ".js--close-button", function() {
+//     item_name = $(this).data('item_name');
+//     item_price = $(this).data('item_price');
+//     itemId = $(this).data('item_id');
+//     console.log(item_price)
     
-    //Calculating total price
-    totalPrice = JSON.parse(localStorage.getItem('totalPrice')); 
-    totalPrice = totalPrice - item_price;
-    $('.js--total-price').text(`€${totalPrice == 0 ? '0.00' : totalPrice.toFixed(2)}`);
-    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
+//     //Calculating total price
+//     totalPrice = JSON.parse(localStorage.getItem('totalPrice')); 
+//     totalPrice = totalPrice - item_price;
+//     $('.js--total-price').text(`€${totalPrice == 0 ? '0.00' : totalPrice.toFixed(2)}`);
+//     localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
 
-    //Removing from local storage
-     productsInBasket = JSON.parse(localStorage.getItem('cart'));
-    let removeIndex = productsInBasket.map(item => item.item_id).indexOf(itemId);
-    productsInBasket.splice(removeIndex, 1);
-    localStorage.setItem('cart', JSON.stringify(productsInBasket));
+//     //Removing from local storage
+//      productsInBasket = JSON.parse(localStorage.getItem('cart'));
+//     let removeIndex = productsInBasket.map(item => item.item_id).indexOf(itemId);
+//     productsInBasket.splice(removeIndex, 1);
+//     localStorage.setItem('cart', JSON.stringify(productsInBasket));
     
-    //Removing from DOM
-    $(this).closest('.js--shopping-cart-pill').remove();
+//     //Removing from DOM
+//     $(this).closest('.js--shopping-cart-pill').remove();
 
-    //Updating amount of the items in basket
-    cartLength = productsInBasket.length;
-    $('.js--total-quantity').html(cartLength)
-   });
+//     //Updating amount of the items in basket
+//     cartLength = productsInBasket.length;
+//     $('.js--total-quantity').html(cartLength)
+//    });
 </script>
 

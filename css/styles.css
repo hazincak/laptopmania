@@ -268,6 +268,11 @@ p{
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
 }
+
+.option{
+    cursor: pointer;
+}
+
 .d-block{
     background-color: #fff;
     margin-bottom: 5px;

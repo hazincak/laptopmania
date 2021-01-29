@@ -105,12 +105,7 @@ if (!isset($_SESSION)){
 </html>
 
 <script>
-    // let totalPrice = document.querySelector('.js--total-price').innerText;
-    // totalPrice = 0;
-    // let shoppingCart = [];
-    // let totalQuantity = document.querySelectorAll('js--total-quantity').innerText;
-    // totalQuantity = shoppingCart.length;
-    
+
     //JS boolean tracking if the user is logged in. The JS value has been created for efficient DOM manipulation
     let logged = '<?php echo json_encode($session_logged);?>';
     //JS variable storing the response from the "loginUser.php" file
@@ -137,33 +132,6 @@ if (!isset($_SESSION)){
             });
         
            }); 
-        });
-
-
-        //Changes the colors of the shop buttons on click
-        $('#business-laptops, #laptops, #gaming-laptops, #macbooks, #discount').click(function() {
-            $('#business-laptops, #laptops, #gaming-laptops, #macbooks, #discount').removeClass("active");
-            $(this).addClass("active");
-        });
-
-        
-    
-    // jQuery animations on scroll
-        $('.js--title-shop-button').click(function(){
-        $('html, body').animate({scrollTop: $('.js--section-shop').offset().top}, 1000);
-        getRequest("SELECT * FROM laptops","#item-capsule","shopAutocomplete");
-        });
-        $('.js--title-review-button').click(function(){
-        $('html, body').animate({scrollTop: $('.js--section-review').offset().top}, 1000);
-        });
-        $('.js--section-discount').waypoint(function(direction){
-        if(direction == "down"){
-            $('nav').addClass('sticky');
-        }else{
-            $('nav').removeClass('sticky');
-            }
-            }, {
-            offset: '80px'
         });
 
     //Function pushing relevant purchase information to the "createOrder.php" file which is pushing data to SQL server database.
