@@ -1,22 +1,20 @@
 
 <?php 
+ob_start();
+session_start();
 
-if (!isset($_SESSION)){
-  session_start();
-}
-
- $session_logged=(isset($_SESSION['logged']))?$_SESSION['logged']: ''; 
- $session_fullname=(isset($_SESSION['fullname']))?$_SESSION['fullname']: ''; 
- $session_username=(isset($_SESSION['username']))?$_SESSION['username']: ''; 
- $session_city=(isset($_SESSION['city']))?$_SESSION['city']: ''; 
- $session_street=(isset($_SESSION['street']))?$_SESSION['street']: ''; 
- $session_eircode=(isset($_SESSION['eircode']))?$_SESSION['eircode']: ''; 
- $session_county=(isset($_SESSION['county']))?$_SESSION['county']: ''; 
- $session_phone=(isset($_SESSION['phone']))?$_SESSION['phone']: ''; 
- $session_email=(isset($_SESSION['email']))?$_SESSION['email']: ''; 
- $session_cardtype=(isset($_SESSION['cardtype']))?$_SESSION['cardtype']: ''; 
- $session_cardnumber=(isset($_SESSION['cardnumber']))?$_SESSION['cardnumber']: ''; 
- $session_expdate=(isset($_SESSION['expdate']))?$_SESSION['expdate']: ''; 
+//  $session_logged=(isset($_SESSION['logged']))?$_SESSION['logged']: ''; 
+//  $session_fullname=(isset($_SESSION['fullname']))?$_SESSION['fullname']: ''; 
+//  $session_username=(isset($_SESSION['username']))?$_SESSION['username']: ''; 
+//  $session_city=(isset($_SESSION['city']))?$_SESSION['city']: ''; 
+//  $session_street=(isset($_SESSION['street']))?$_SESSION['street']: ''; 
+//  $session_eircode=(isset($_SESSION['eircode']))?$_SESSION['eircode']: ''; 
+//  $session_county=(isset($_SESSION['county']))?$_SESSION['county']: ''; 
+//  $session_phone=(isset($_SESSION['phone']))?$_SESSION['phone']: ''; 
+//  $session_email=(isset($_SESSION['email']))?$_SESSION['email']: ''; 
+//  $session_cardtype=(isset($_SESSION['cardtype']))?$_SESSION['cardtype']: ''; 
+//  $session_cardnumber=(isset($_SESSION['cardnumber']))?$_SESSION['cardnumber']: ''; 
+//  $session_expdate=(isset($_SESSION['expdate']))?$_SESSION['expdate']: ''; 
 
 
   include "includes/header.php";   
@@ -97,42 +95,10 @@ if (!isset($_SESSION)){
  
     <!-- Footer -->
     <?php include "includes/footer.php"; ?>  
-
-   
   </body>
-
-    
 </html>
 
 <script>
-
-    //JS boolean tracking if the user is logged in. The JS value has been created for efficient DOM manipulation
-    let logged = '<?php echo json_encode($session_logged);?>';
-    //JS variable storing the response from the "loginUser.php" file
-    let loggedIn = false;
-
-    //Funcion manipulating DOM After logging in and logging out
-        $(function(){
-            if(logged == "true"){
-              $(function(){
-                    $("span.js--account").text(<?php echo json_encode($session_username);?>);
-                    $("input.js--login-account-button").html(".js--login-account-button").replaceWith("<input class='btn btn-danger btn-block js--logout-account-button' name='logintoaccount' value='Logout'>");
-                });
-                loggedIn = true;
-            } 
-        });
-
-        $("div").on("click", ".js--my-account", function(){
-           $(function(){
-            $(".js--logout-account-button").click(function(){
-                $("span.js--account").text("My Account");
-                $("input.js--logout-account-button").html(".js--logout-account-button").replaceWith("<input class='btn btn-secondary btn-block js--login-account-button' type='submit' name='logintoaccount' value='Login'>");
-                loggedIn = false;
-                <?php session_unset();?>
-            });
-        
-           }); 
-        });
 
     //Function pushing relevant purchase information to the "createOrder.php" file which is pushing data to SQL server database.
     //On success current php session end and the page is reloaded. 
@@ -157,7 +123,7 @@ if (!isset($_SESSION)){
                 },
                     success : function(){
                     alert(`Thank you for your order ${userName}`);
-                    <?php session_unset();?> 
+                    
                     location.reload();
                     
                  },

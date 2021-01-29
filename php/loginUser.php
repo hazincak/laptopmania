@@ -1,13 +1,8 @@
 <?php session_start();?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-</head>
 <?php include "../includes/connectDb.php";?>
 
 <?php   
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
     if(isset($_POST['logintoaccount'])){
         $_SESSION['logged'] = false;
 
@@ -39,21 +34,13 @@ header('Content-Type: application/json');
                 $db_expiration_date = $row['expiration_date'];
             }
 
-        if($cleanLoginUsername == $db_user_name && $cleanLoginPassword !== $db_user_password){
+        if($cleanLoginUsername !== $db_user_name || $cleanLoginPassword !== $db_user_password){
             header("Location: ../laptopmania.php");
             $_SESSION['logged'] = false;
-            $_SESSION['password_err'] = 'Invalid password';
-            $_SESSION['username_err'] = '';
-
-         
-        }else if($cleanLoginUsername !== $db_user_name && $cleanLoginPassword == $db_user_password){
-            header("Location: ../laptopmania.php");
-            $_SESSION['logged'] = false;
-            $_SESSION['password_err'] = '';
-            $_SESSION['username_err'] = 'Invalid username';
+            $_SESSION['login_err'] = 'Invalid password or username';
+            
         }else if ($cleanLoginUsername == $db_user_name && $cleanLoginPassword == $db_user_password){
             header("Location: ../laptopmania.php");
-            header("Location: ../checkout.php");
             
             $_SESSION['userid'] = $db_user_id;
             $_SESSION['fullname'] = $db_full_name;

@@ -5,7 +5,7 @@
 ?>
 
 <div class= "container-fluid">
-    <form action="php/createAccount.php" method="post" class="js--form-account">    
+    <form action="php/createAccount.php" method="post" >    
         <h2 class="text-center">Create account</h2>
         <h4 class="text-center">Complete and confirm your details</h4>
         <div class="create-account-form">    
@@ -142,7 +142,7 @@
           </div>
           <br>
           <h4 class="text-center header">Complete your bank details</h4>
-          <div class="d-flex flex-row justify-content-center">
+          <div class="row justify-content-center">
               <div class="col-md-6">
                   <div class="form-group input-group">
                           <select name="cardtype" class="form-control" style="width:45%" required>
@@ -154,7 +154,7 @@
                   </div>
               </div>
           </div>
-          <div class="d-flex flex-row justify-content-center">
+          <div class="row justify-content-center">
               <div class="col-md-6">
                   <div class="form-group input-group">
                       <div class="input-group-prepend">
@@ -164,7 +164,7 @@
                   </div>
               </div>
           </div>
-          <div class="d-flex flex-row justify-content-center">
+          <div class="row justify-content-center">
               <div class="col-md-6">
                   <div class="form-group input-group">
                       <div class="input-group-prepend">
@@ -174,7 +174,7 @@
                   </div>
               </div>
           </div>
-          <div class="d-flex flex-row justify-content-center">
+          <div class="row justify-content-center">
               <div class="col-md-6">
                   <div class="form-group input-gropu">
                       <label><span class="hidden-xs">Expiration:</span> </label>
@@ -228,5 +228,4 @@ $('input#js--confirm-password').on('keyup', function () {
       $('span.js--password-match').html('Not Matching').css('color', 'red');
 });
 
-$(".js--form-account").validate();
 </script>
