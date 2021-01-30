@@ -33,9 +33,9 @@ $('.js--title-review-button').click(function(){
 });
 $('.js--section-discount').waypoint(function(direction){
     if(direction == "down"){
-        $('nav').addClass('sticky');
+        $('.navbar').addClass('sticky');
     }else{
-        $('nav').removeClass('sticky');
+        $('.navbar').removeClass('sticky');
         }
         }, {
         offset: '80px'
@@ -60,29 +60,41 @@ $(".js--dropdown-cart").on("click", ".js--close-button", function() {
     $('.js--total-quantity').html(cartLength);
    });
 
-$('.option').click(function(){
-        let query
-        $('#overlay').fadeIn();
-        query = $(this).data('value'); 
-        console.log(query)
+$('.js--option').click(function(){
+    let option = getOption(); 
+    let page = setPage(0);
+    getResult(option, page);
+});
+
+$(".js--pagination").on("click", ".js--page", function(){
+    let option = getOption(); 
+    let page = getPage();
+    getResult(option, page);
+});
+
+function getResult(option, page = ''){
+    $('#overlay').fadeIn();
     $.ajax({
-    url: "php/getProducts.php",
+    url: `php/getProducts.php${'?page='+page}`,
     type:"GET",
     data:{
-        q:  `${query}`,
+        option:  `${option}`,
     },
     success: function(response){
+        let parsedResponse = JSON.parse(response);
         setTimeout(function () {
         $('#overlay').fadeOut();        
         $('#item-capsule').html(null)
-        const products = JSON.parse(response);
+        const products = parsedResponse.products;
+        const paginationCount = parsedResponse.count;
         
-        populateProducts(products)
+        populateProducts(products);
+        populatePagination(paginationCount);
     }, 1000,)},
     error: function(){
     }
     })
-});
+}
 
 
 

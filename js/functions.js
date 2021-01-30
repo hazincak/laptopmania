@@ -53,13 +53,17 @@ function populateShopSectionOnPageLoad(){
         url: "php/getProducts.php",
         type:"GET",
         data:{
-            q:  `SELECT * FROM laptops`,
+            option:  '',
             },
     
         success: function(response){    
+            let parsedResponse = JSON.parse(response);
             $('#item-capsule').html(null)
-            const products = JSON.parse(response);
-            populateProducts(products)
+            const products = parsedResponse.products;
+            const paginationCount = parsedResponse.count;
+        
+            populateProducts(products);
+            populatePagination(paginationCount);
             },
     
         error: function(){
@@ -93,6 +97,14 @@ function populateProducts(items){
         }
     }
 
+function populatePagination(paginationCount){
+    console.log($('.js--pagination').html(''))
+    for (let i = 1; i <= paginationCount; i++) {
+        $('.js--pagination').append(
+            `<li class="page-item"><a class="page-link js--page" onclick='setPage(${i})' >${i}</a></li>`
+        )
+      }
+}
 
 
 
