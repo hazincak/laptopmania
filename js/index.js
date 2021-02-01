@@ -5,6 +5,8 @@ let totalPrice;
 $(document).ready(function(){
 
   populateShopSectionOnPageLoad();
+  checkBasketState();
+  
 
   productsInBasket = JSON.parse(localStorage.getItem('cart'));
   productsInBasket ? cartLength = productsInBasket.length : cartLength = 0;
@@ -50,7 +52,7 @@ $(".js--dropdown-cart").on("click", ".js--close-button", function() {
     //Update TotalPrice stored in Local Storage
     totalPrice = updateLocStoragePriceOnDelete(item_price);
     //Update TotalPrice in DOM
-    $('.js--total-price').text(`€${totalPrice == 0 ? '0.00' : totalPrice.toFixed(2)}`);
+    $('.js--total-price').text(`€${totalPrice == 0 ? '0.00' : toFixed(totalPrice,2)}`);
     //Removing from local storage
     removeLocStorageBasketItemOnDelete(itemId);
     //Removing from DOM
@@ -58,6 +60,8 @@ $(".js--dropdown-cart").on("click", ".js--close-button", function() {
     //Updating amount of the items in basket
     cartLength = productsInBasket.length;
     $('.js--total-quantity').html(cartLength);
+
+    checkBasketState();
    });
 
 $('.js--option').click(function(){
@@ -116,7 +120,7 @@ function getResult(option, page = ''){
         localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
         
         //Adding total price to DOM
-        $('.js--total-price').text(`€${totalPrice.toFixed(2)}`);
+        $('.js--total-price').text(`€${toFixed(totalPrice, 2)}`);
         
         //Adding item item to DOM
         appendToBasket(basketItem);
@@ -125,4 +129,6 @@ function getResult(option, page = ''){
         productsInBasket = JSON.parse(localStorage.getItem('cart'));
         cartLength = productsInBasket.length;
         $('.js--total-quantity').html(cartLength)
+
+        checkBasketState();
         });

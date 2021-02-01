@@ -48,12 +48,12 @@
                       <div class="js--dropdown-cart">
                       </div>  
                     <div class="d-flex flex-row">
-                    <button type="button" class="btn btn-success btn-block js--checkout-button">Check out<i class="far fa-credit-card"></i></button>
+                    
+                    <button class=" btn btn-success btn-block  js--checkout-button"   ><a id="js--checkout-link" href=<?php echo (isset($_SESSION['username']) ? "checkout.php" : "completeDetails.php") ?>>Check out<i class="far fa-credit-card"></a></i></button>
                     </div>
                   </div>
                 </li>
         </ul>
     </div>
 </nav>
-
 

@@ -136,9 +136,6 @@ session_start();
     });    
     });
 
-    // function addToPersistentBasket(shoppingCart){
-    //       localStorage.setItem('cart', JSON.stringify(shoppingCart))
-    //     }
 </script>
 
     
