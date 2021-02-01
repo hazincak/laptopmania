@@ -102,39 +102,7 @@ session_start();
 
     //Function pushing relevant purchase information to the "createOrder.php" file which is pushing data to SQL server database.
     //On success current php session end and the page is reloaded. 
-    $("nav").on("click", ".js--checkout-button", function(){
-        $(function(){
-            $("button.js--final-confirmation").on("click", function(){
-                let userName = $(".js--final-confirmation").closest('div.container-fluid').find('span.js--buyer-name').text();
-                let orderFinalPrice = $(".js--final-confirmation").closest('div.container-fluid').find("span.js--final-price").text();
-                let allItems=[];
-                
-                for (let item of shoppingCart){
-                allItems += item.name + ", ";
-                    }
-              
-                $.ajax({
-                    url: "php/createOrder.php",
-                    type:"GET",
-                    data:{
-                    buyer: userName,
-                    finalPrice: orderFinalPrice,
-                    items: allItems
-                },
-                    success : function(){
-                    alert(`Thank you for your order ${userName}`);
-                    
-                    location.reload();
-                    
-                 },
-                    error : function(){
-                    alert("Unsuccessful");
-                }
-                });
-              
-        });
-    });    
-    });
+
 
 </script>
 

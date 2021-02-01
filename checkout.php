@@ -21,41 +21,40 @@ if (!isset($_SESSION)){
  $session_expdate=(isset($_SESSION['expdate']))?$_SESSION['expdate']: ''; 
 ?>
 
-<div class="container-fluid">
+<div class="container">
         <h2 class="text-center">Order details.</h2>
-        <div class="summary-personal details-details">
         <hr>
         <h5 class='font-weight-bold text-left'>Personal details</h5>
         <hr>
-        <div class="summary-personal js-summary-personal">
+        <div>
             <div class="row">
               <div class="col-md-6">
-              	<div><b>Full name:&nbsp;&nbsp;</b><?php echo $session_fullname?></div>
+              	<div><b>Full name:&nbsp;&nbsp;</b><span><span id="fullname"><?php echo $session_fullname?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>User name:&nbsp;&nbsp;</b><span class="js--buyer-name"><?php $session_username?></span></div>
+                <div><b>User name:&nbsp;&nbsp;</b><span id="username"><?php $session_username?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>City:&nbsp;&nbsp;</b><?php echo $session_city?></div>
+                <div><b>City:&nbsp;&nbsp;</b><span id="city"><?php echo $session_city?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>Street:&nbsp;&nbsp;</b><?php echo $session_street?></div>
+                <div><b>Street:&nbsp;&nbsp;</b><span id="street"><?php echo $session_street?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>Eircode:&nbsp;&nbsp;</b><?php echo $session_eircode?></div>
+                <div><b>Eircode:&nbsp;&nbsp;</b><span id="eircode"><?php echo $session_eircode?></scpan></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>County:&nbsp;&nbsp;</b><?php echo $session_county?></div>
+                <div><b>County:&nbsp;&nbsp;</b><span id="county"><?php echo $session_county?></span></div>
               </div>
             </div>
             <hr>
@@ -63,12 +62,12 @@ if (!isset($_SESSION)){
             <hr>
             <div class="row">
               <div class="col-md-6">
-                <div><b>Phone number:&nbsp;&nbsp;</b><?php echo $session_phone?></div>
+                <div><b>Phone number:&nbsp;&nbsp;</b><span id="phone_number"><?php echo $session_phone?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>E-mail address:&nbsp;&nbsp;</b><?php echo $session_email?></div>
+                <div><b>E-mail address:&nbsp;&nbsp;</b><span id="email"><?php echo $session_email?></span></div>
               </div>
             </div>
             <hr>
@@ -76,36 +75,37 @@ if (!isset($_SESSION)){
             <hr>
             <div class="row">
               <div class="col-md-6">
-                <div><b>Card type:&nbsp;&nbsp;</b><?php echo $session_cardtype?></div>
+                <div><b>Card type:&nbsp;&nbsp;</b><span id="card_type"><?php echo $session_cardtype?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>Card number:&nbsp;&nbsp;</b><?php echo $session_cardnumber?></div>
+                <div><b>Card number:&nbsp;&nbsp;</b><span id="card_number"><?php echo $session_cardnumber?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>Card expiration date:&nbsp;&nbsp;</b><?php echo $session_expdate?></div>
+                <div><b>Card expiration date:&nbsp;&nbsp;</b><span id="exp_date"><?php echo $session_expdate?></span></div>
               </div>
             </div>
             <hr>
             <h5 class='font-weight-bold text-left'>Shopping cart</h5>
             <hr>
-        </div>
-                </div>
-                <div class="summary-products">
+        
+               
+                <div class="js--summary-products">
                 </div>
                 <div class="total-price">
                 </div>
                 <div class="row justify-content-center">
-                  <div class="col-md-6">                                                                                                   
-                    <button class="btn btn-success btn-block js--final-confirmation">Confirm your order</button>
+                  <div class="col-md-8">                                                                                                   
+                    <button class="btn btn-success btn-block js--order-confirmation" >Confirm your order</button>
                   </div>
                 </div>
-            </div>
-</div>   
-
+          </form>
+        </div>
+<!-- container    -->
+</div>
 <?php include "includes/footer.php"; ?>
 
 <script>
@@ -115,7 +115,7 @@ $(function(){
   const totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
   const delivery = 3.00;
   for(let item of cart){
-    $('.summary-products').append(
+    $('.js--summary-products').append(
            `<div class="summary-item"> 
              <div class="d-flex flex-fill flex-row align-items-center justify-content-around">
                <div class='p-2'><b>${item.item_name}</b></div>
@@ -130,10 +130,68 @@ $(function(){
          `<hr>
          <div class ="d-flex flex-row justify-content-start"><b>Delivery:&nbsp;</b>€${delivery}</div>
          <div class ="d-flex flex-row justify-content-start"><b>Price with VAT:&nbsp;</b>€${toFixed(totalPrice,2)}</div>    
-         <div class ="d-flex flex-row justify-content-start"><b>TotalPrice:&nbsp;</b>€<span class="js--final-price">${delivery + totalPrice}</span></div> `
-     )
-
+         <div class ="d-flex flex-row justify-content-start"><b>TotalPrice:&nbsp;</b>€<span class="js--final-price">${delivery + totalPrice}</span></div> 
+         <hr>`
+        )
 })
+$('.js--order-confirmation').click(function(){
+  const fullname = $('#fullname').text();
+  const username = $('#username').text();
+  const city = $('#city').text();
+  const street = $('#street').text();
+  const eircode = $('#eircode').text();
+  const county = $('#county').text();
+  const phone_number = $('#phone_number').text();
+  const email = $('#email').text();
+
+  const card_type = $('#card_type').text();
+  const card_number = $('#card_number').text().substr(length -5);
+  const card_expiration_date = $('#exp_date').text();
+  
+
+  // const customer ={
+  //   'fullname': fullname,
+  //   'username': username,
+  //   'city': city,
+  //   'street': street,
+  //   'eircode': eircode,
+  //   'county': county,
+  //   'phone_number': phone_number,
+  //   'email': email,
+  // }
+
+  const paymentMethod = {
+    'card_type': card_type,
+    'card_number': card_number,
+    'card_expiration_date': card_expiration_date
+  }
+
+  const products = JSON.parse(localStorage.getItem('cart'));
+  const totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
+
+  createOrder(email, paymentMethod, products, totalPrice);
+})
+
+function createOrder(email, paymentMethod, products, totalPrice){
+  $.ajax({
+        url: "php/createOrder.php",
+        type:"POST",
+        data:{
+            email: email,
+            paymentMethod: JSON.stringify(paymentMethod),
+            products: JSON.stringify(products),
+            totalPrice: totalPrice,
+            },
+    
+        success: function(response){    
+          alert('thank you for your order')
+            },
+    
+        error: function(){
+    
+            }
+        });
+}
 </script>
 
 

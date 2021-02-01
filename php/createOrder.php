@@ -1,16 +1,24 @@
-<?php include "../includes/connectDb.php"; ?>
+<?php 
+    include "../includes/connectDb.php";
+    include "../sharedFunctions/queries.php";
+?>
 <?php
-if(isset($_GET['buyer'], $_GET['finalPrice'], $_GET['items'], )){
-    $buyerName = $_GET['buyer'];
-    $finalPrice = $_GET['finalPrice'];
-    $orderedItems = $_GET['items']; 
-    $buyerName = trim($buyerName, '"');
-}
-$query = "INSERT INTO orders (buyer_user_name, items, total_price)";
-$query .= "VALUES ('$buyerName', '$orderedItems', '$finalPrice')";
-$result = mysqli_query($connection, $query); 
+ 
+if(isset( $_POST['paymentMethod'], $_POST['products'], $_POST['totalPrice'])){
+    $paymentMethod = $_POST['paymentMethod'];
+    $products = $_POST['products'];
+    $totalPrice = $_POST['totalPrice'];
+    $email = $_POST['email'];
+    
+    $decodedPaymentMethod = json_decode($paymentMethod);
+    $decodedProducts = json_decode($products);
+    $totalPriceAndDelivery = $totalPrice + 3;
 
-if(!$result){
-    die('Query FAILED' . mysqli_error());
-}
+    $user_id = getUserIdByEmail($connection, $email);
+    $order_id = createOrder($connection, null, $totalPriceAndDelivery, $user_id);
+
+    attachProductToOrder($connection, $order_id, $decodedProducts);
+
+  
+};
 ?>

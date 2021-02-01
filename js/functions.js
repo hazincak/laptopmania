@@ -124,12 +124,14 @@ function appendToBasket(product){
 
 function checkBasketState(){
     const cart = JSON.parse(localStorage.getItem('cart'));
-    if(cart.length === 0){
-      document.querySelector('.js--checkout-button').disabled = true;
-      document.querySelector('#js--checkout-link').classList.add('disabled-link');
-    }else{
-      document.querySelector('.js--checkout-button').disabled = false;
-      document.querySelector('#js--checkout-link').classList.remove('disabled-link');
+    if(cart != null){
+        if(cart.length === 0){
+          document.querySelector('.js--checkout-button').disabled = true;
+          document.querySelector('#js--checkout-link').classList.add('disabled-link');
+        }else{
+          document.querySelector('.js--checkout-button').disabled = false;
+          document.querySelector('#js--checkout-link').classList.remove('disabled-link');
+        }
     }
   }
 
