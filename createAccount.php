@@ -22,15 +22,16 @@ if(isset($_POST['createaccount'])){
     $expirationmonth = $_POST['expirationmonth'];
     $expirationyear = $_POST['expirationyear'];
 }   
-    $expirationdate = $expirationmonth."-".$expirationyear; 
+    $expirationdate = $expirationmonth."/".$expirationyear; 
+   
     
-    $query = "INSERT INTO users (full_name,user_name,city,street,eircode,county,phone,email,password,card_type,card_number,expiration_date)";
-    $query .= "VALUES ('$fullname', '$username','$city','$street','$eircode','$county','$phone','$email','$password', '$cardtype', '$cardnumber', '$expirationdate')";
+    $query = "INSERT INTO users (full_name, user_name, city, street, eircode, county, phone, email, password, card_type, card_number, registered ,expiration_date)";
+    $query .= "VALUES ('$fullname', '$username','$city','$street','$eircode','$county','$phone','$email','$password', '$cardtype', '$cardnumber', 1, '$expirationdate')";
     
     $result = mysqli_query($connection, $query); 
 
     if(!$result){
-       
+        die('Query FAILED' . mysqli_error($connection));
     
     }else{
         echo "

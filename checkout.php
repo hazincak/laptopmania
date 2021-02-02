@@ -29,12 +29,12 @@ if (!isset($_SESSION)){
         <div>
             <div class="row">
               <div class="col-md-6">
-              	<div><b>Full name:&nbsp;&nbsp;</b><span><span id="fullname"><?php echo $session_fullname?></span></div>
+              	<div><b>Full name:&nbsp;&nbsp;</b><span id="fullname"><?php echo $session_fullname?></span></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div><b>User name:&nbsp;&nbsp;</b><span id="username"><?php $session_username?></span></div>
+                <div><b>User name:&nbsp;&nbsp;</b><span id="username"><?php echo $session_username?></span></div>
               </div>
             </div>
             <div class="row">
@@ -149,17 +149,6 @@ $('.js--order-confirmation').click(function(){
   const card_expiration_date = $('#exp_date').text();
   
 
-  // const customer ={
-  //   'fullname': fullname,
-  //   'username': username,
-  //   'city': city,
-  //   'street': street,
-  //   'eircode': eircode,
-  //   'county': county,
-  //   'phone_number': phone_number,
-  //   'email': email,
-  // }
-
   const paymentMethod = {
     'card_type': card_type,
     'card_number': card_number,
@@ -169,14 +158,15 @@ $('.js--order-confirmation').click(function(){
   const products = JSON.parse(localStorage.getItem('cart'));
   const totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
 
-  createOrder(email, paymentMethod, products, totalPrice);
+  createOrderAsRegistered(email, paymentMethod, products, totalPrice, true);
 })
 
-function createOrder(email, paymentMethod, products, totalPrice){
+function createOrderAsRegistered(email, paymentMethod, products, totalPrice, registered){
   $.ajax({
         url: "php/createOrder.php",
         type:"POST",
         data:{
+            registered: registered,
             email: email,
             paymentMethod: JSON.stringify(paymentMethod),
             products: JSON.stringify(products),
@@ -185,6 +175,7 @@ function createOrder(email, paymentMethod, products, totalPrice){
     
         success: function(response){    
           alert('thank you for your order')
+          localStorage.clear();
             },
     
         error: function(){

@@ -12,7 +12,7 @@
         $cleanLoginUsername = mysqli_real_escape_string($connection, $loginUsername);
         $cleanLoginPassword = mysqli_real_escape_string($connection, $loginPassword);
 
-        $query = "SELECT * FROM users WHERE user_name = '{$cleanLoginUsername}'";
+        $query = "SELECT * FROM users WHERE user_name = '{$cleanLoginUsername}' AND registered = true";
         $result = mysqli_query($connection, $query);
             if(!$result){
                 die('Query FAILED' . mysqli_error($connection));
@@ -56,8 +56,7 @@
             $_SESSION['cardnumber'] = $db_card_number;
             $_SESSION['expdate'] = $db_expiration_date;
             
-            $_SESSION['password_err'] = '';
-            $_SESSION['username_err'] = '';
+            $_SESSION['login_err'] = '';
             
             $_SESSION['logged'] = true;
 

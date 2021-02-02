@@ -53,7 +53,7 @@ function populateShopSectionOnPageLoad(){
         url: "php/getProducts.php",
         type:"GET",
         data:{
-            option:  '',
+            option:  'Business laptops',
             },
     
         success: function(response){    

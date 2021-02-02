@@ -16,10 +16,10 @@ function getUserIdByEmail ($connection, $email){
      return $id;
  };
 
- function createOrder($connection, $customer_id, $total_price, $user_id){
+ function createOrder($connection, $total_price, $user_id){
     $order_id = null;
-    $query = "INSERT INTO orders (user_id, customer_id, total_price)";
-    $query .="VALUES ('$user_id', '$customer_id', '$total_price')";
+    $query = "INSERT INTO orders (user_id, total_price)";
+    $query .="VALUES ('$user_id', '$total_price')";
 
     $result = mysqli_query($connection, $query); 
     if(!$result){
@@ -28,8 +28,7 @@ function getUserIdByEmail ($connection, $email){
     
     $order_id = $connection->insert_id;
     
-    return $order_id;
-          
+    return $order_id;        
 };
 
 function attachProductToOrder($connection, $order_id, $products){
@@ -42,8 +41,28 @@ function attachProductToOrder($connection, $order_id, $products){
             die('Query FAILED' . mysqli_error($connection));
         }
      }
-    
+};
 
+function attachPaymentToOrder($connection, $order_id, $user_id, $paymentMethod, $totalPrice){
+    $query = "INSERT INTO payments ( user_id, order_id, card_type, exp_date, card_ending, total_price)";
+    $query.="VALUES ('$user_id', '$order_id', '$paymentMethod->card_type', '$paymentMethod->card_expiration_date', '$paymentMethod->card_number', $totalPrice)";
+    $result = mysqli_query($connection, $query); 
+    if(!$result){
+        die('Query FAILED' . mysqli_error($connection));
+    }
+};
+
+function  createUnregisteredUser($connection, $user){
+ $query = "INSERT INTO users (full_name, city, street, eircode, county, phone, email, registered)";
+ $query .= "VALUES ('$user->fullname', '$user->city', '$user->street' , '$user->eircode' , '$user->county' , '$user->phone_number' , '$user->email', '0')";
+ $result = mysqli_query($connection, $query);
+ if(!$result){
+     die('Query FAILED' . mysqli_error($connection));
+ }
+
+ $user_id = $connection->insert_id;
+    
+    return $user_id; 
 }
 
 ?>

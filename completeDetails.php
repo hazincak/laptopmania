@@ -5,7 +5,6 @@ include "includes/connectDb.php";
 ?> 
 <div class="container-fluid">
 
-    <form action="createAccount.php" method="post" >    
         <h2 class="text-center">Complete your details to finish the order</h2>
         
         <div class="row">
@@ -140,20 +139,20 @@ include "includes/connectDb.php";
             </div>
             <div class="col-md-7">
             <h4 class="text-center header">Order summary</h4>
-                <div class="summary-products">
+                <div class="js--summary-products mt-5">
                 </div>
                 <div class="total-price">
                 </div>
             </div>
         </div>
+        <hr>
         <div class="row justify-content-center">
             <div class="col-md-6">                                       
                 <div class="form-group">                                               
-                    <input class="btn btn-secondary btn-block " type="submit" name="createaccount" value="Complete order">
+                    <button class="btn btn-secondary btn-block js--confirm-details-and-order">Confirm your details and place the order</button>
                 </div>     
             </div>
         </div>
-    </form>
 </div>
 
 <?php include "includes/footer.php"; ?>
@@ -164,7 +163,7 @@ $(function(){
   const totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
   const delivery = 3.00;
   for(let item of cart){
-    $('.summary-products').append(
+    $('.js--summary-products').append(
            `<div class="summary-item"> 
              <div class="d-flex flex-fill flex-row align-items-center justify-content-around">
                <div class='p-2'><b>${item.item_name}</b></div>
@@ -183,5 +182,67 @@ $(function(){
      )
 
 })
+
+$('.js--confirm-details-and-order').click(function(){
+
+    const fullname = $('input[name=fullname]').val();
+    const city = $('input[name=city]').val();
+    const street = $('input[name=street]').val();
+    const eircode = $('input[name=eircode]').val();
+    const county = $('select[name=county]').val();
+    const phone = $('input[name=phone]').val();
+    const email = $('input[name=email]').val();
+    
+
+    const card_type = $('input[name=cardtype]').val();
+    const card_name = $('input[name=cardname]').val();
+    const card_number = $('input[name=cardnumber]').val();
+    const card_expiration_month = $('select[name=expirationmonth]').val();
+    const card_expiration_year = $('select[name=expirationyear]').val();
+
+    const products = JSON.parse(localStorage.getItem('cart'));
+    const totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
+
+    const user ={
+    'fullname': fullname,
+    'city': city,
+    'street': street,
+    'eircode': eircode,
+    'county': county,
+    'phone_number': phone,
+    'email': email,
+   }
+
+   const paymentMethod = {
+    'card_type': card_type,
+    'card_number': card_number,
+    'card_expiration_date': card_expiration_month + '/' + card_expiration_year,
+   }
+
+   createOrderAsGuest(user, paymentMethod, products, totalPrice, false);
+})
+
+function createOrderAsGuest(user, paymentMethod, products, totalPrice, registered){
+    $.ajax({
+        url: "php/createOrder.php",
+        type:"POST",
+        data:{
+            registered: registered,
+            user: JSON.stringify(user),
+            paymentMethod: JSON.stringify(paymentMethod),
+            products: JSON.stringify(products),
+            totalPrice: totalPrice,
+            },
+    
+        success: function(response){    
+          alert('thank you for your order guest')
+          localStorage.clear();
+            },
+    
+        error: function(){
+    
+            }
+        });
+}
 
 </script>

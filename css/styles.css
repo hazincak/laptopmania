@@ -381,6 +381,7 @@ footer p:hover{
 /* Order summary */
 .summary-item{
     border: 1px solid var(--page-color-2);
+    margin: 5px;
     background-color: #fff;
     border-radius: 20px;
     -webkit-border-radius: 20px;
