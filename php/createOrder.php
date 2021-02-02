@@ -1,16 +1,41 @@
-<?php include "connectDb.php"; ?>
+<?php 
+    include "../includes/connectDb.php";
+    include "../sharedFunctions/queries.php";
+?>
 <?php
-if(isset($_GET['buyer'], $_GET['finalPrice'], $_GET['items'], )){
-    $buyerName = $_GET['buyer'];
-    $finalPrice = $_GET['finalPrice'];
-    $orderedItems = $_GET['items']; 
-    $buyerName = trim($buyerName, '"');
-}
-$query = "INSERT INTO orders (buyer_user_name, items, total_price)";
-$query .= "VALUES ('$buyerName', '$orderedItems', '$finalPrice')";
-$result = mysqli_query($connection, $query); 
+ 
+if(isset( $_POST['paymentMethod'], $_POST['products'], $_POST['totalPrice'], $_POST['registered'])){
+    $registered = $_POST['registered'];
+    
+    $paymentMethod = $_POST['paymentMethod'];
+    $products = $_POST['products'];
+    $totalPrice = $_POST['totalPrice'];
+    
+    $decodedPaymentMethod = json_decode($paymentMethod);
+    $decodedProducts = json_decode($products);
+    $totalPriceAndDelivery = $totalPrice + 3;
+   
+    if($registered === 'true'){        
+    
+        $email = $_POST['email'];
+        $user_id = getUserIdByEmail($connection, $email);
+        $order_id = createOrder($connection, $totalPriceAndDelivery, $user_id);
 
-if(!$result){
-    die('Query FAILED' . mysqli_error());
-}
+        attachProductToOrder($connection, $order_id, $decodedProducts);
+        attachPaymentToOrder ($connection, $order_id, $user_id, $decodedPaymentMethod, $totalPrice);
+
+        exit('success');
+    } else if($registered === 'false'){
+        $user = $_POST['user']; 
+        $decodedUser = json_decode($user);
+        $decodedProducts = json_decode($products);
+        
+        $user_id = createUnregisteredUser($connection, $decodedUser);
+        $order_id = createOrder($connection, $totalPriceAndDelivery, $user_id);
+        attachProductToOrder($connection, $order_id, $decodedProducts);
+        attachPaymentToOrder ($connection, $order_id, $user_id, $decodedPaymentMethod, $totalPrice);
+        exit('success');
+    }
+    
+};
 ?>

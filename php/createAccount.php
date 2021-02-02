@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="../css/styles.css?v=<?php echo time(); ?>">
-<link rel="stylesheet" href="../css/queries.css?v=<?php echo time(); ?>">
-</head>
-<body>
-<?php include "connectDb.php";
-    
+
+<?php 
+include "includes/header.php";   
+include "includes/connectDb.php"; 
+include "includes/spinner.php";
+include "sharedFunctions/vatCalculator.php";
+include "includes/navbar.php";  
+
 if(isset($_POST['createaccount'])){
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
@@ -25,28 +22,17 @@ if(isset($_POST['createaccount'])){
     $expirationmonth = $_POST['expirationmonth'];
     $expirationyear = $_POST['expirationyear'];
 }   
-    $expirationdate = $expirationmonth."-".$expirationyear; 
+    $expirationdate = $expirationmonth."/".$expirationyear; 
+   
     
-    $query = "INSERT INTO users (full_name,user_name,city,street,eircode,county,phone,email,password,card_type,card_number,expiration_date)";
-    $query .= "VALUES ('$fullname', '$username','$city','$street','$eircode','$county','$phone','$email','$password', '$cardtype', '$cardnumber', '$expirationdate')";
+    $query = "INSERT INTO users (full_name, user_name, city, street, eircode, county, phone, email, password, card_type, card_number, registered ,expiration_date)";
+    $query .= "VALUES ('$fullname', '$username','$city','$street','$eircode','$county','$phone','$email','$password', '$cardtype', '$cardnumber', 1, '$expirationdate')";
     
     $result = mysqli_query($connection, $query); 
 
     if(!$result){
-       
-        echo "
-        <section class = 'account-creation'>
-            <div class='container-fluid'>
-                <h2 class='text-center'>Ooops, something went wrong.</h2>
-                <h4 class='text-center header'>User with username:&nbsp;</b>" .  $username ."&nbsp;already exists.</h4>
-                <h4 class='text-center header'>Please finish your registration with different username.</h4>
-                <div class='row justify-content-center'>
-                    <div class='row-md-4'>
-                    <div><a href='../laptopmania.php' class='btn btn-secondary btn-block'>Go back to our webpage</a>
-                    </div>  
-                </div> 
-            </div> 
-                ";
+        die('Query FAILED' . mysqli_error($connection));
+    
     }else{
         echo "
         <section class = 'account-creation'>
@@ -69,7 +55,7 @@ if(isset($_POST['createaccount'])){
         <h5 class='font-weight-bold'>Contact details</h5>
         <hr>
         <div class='d-flex flex-column justify-content-center'>
-            <div><b>Phone number:&nbsp;&nbsp;</b>" . $phone . "</div>
+            <div><b>Phone number:&nbsp;&nbsp;</b> . $phone . </div>
             <div><b>E-mail address:&nbsp;&nbsp;</b>" . $email . "</div>
         </div>
         <div class='row justify-content-center'>
@@ -84,7 +70,7 @@ if(isset($_POST['createaccount'])){
 
 ?>
 
-
+<?php include "includes/footer.php"; ?>
 
 </body>
 </html>

@@ -1,15 +1,8 @@
 <?php session_start();?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-</head>
-<?php include "connectDb.php";?>
+<?php include "../includes/connectDb.php";?>
 
 <?php   
-header('Content-Type: application/json');
-
-
+// header('Content-Type: application/json');
     if(isset($_POST['logintoaccount'])){
         $_SESSION['logged'] = false;
 
@@ -19,7 +12,7 @@ header('Content-Type: application/json');
         $cleanLoginUsername = mysqli_real_escape_string($connection, $loginUsername);
         $cleanLoginPassword = mysqli_real_escape_string($connection, $loginPassword);
 
-        $query = "SELECT * FROM users WHERE user_name = '{$cleanLoginUsername}'";
+        $query = "SELECT * FROM users WHERE user_name = '{$cleanLoginUsername}' AND registered = true";
         $result = mysqli_query($connection, $query);
             if(!$result){
                 die('Query FAILED' . mysqli_error($connection));
@@ -41,12 +34,12 @@ header('Content-Type: application/json');
                 $db_expiration_date = $row['expiration_date'];
             }
 
-        if($cleanLoginUsername !== $db_user_name && $cleanLoginPassword !== $db_user_password){
+        if($cleanLoginUsername !== $db_user_name || $cleanLoginPassword !== $db_user_password){
             header("Location: ../laptopmania.php");
             $_SESSION['logged'] = false;
-
-         
-        } else if ($cleanLoginUsername == $db_user_name && $cleanLoginPassword == $db_user_password){
+            $_SESSION['login_err'] = 'Invalid password or username';
+            
+        }else if ($cleanLoginUsername == $db_user_name && $cleanLoginPassword == $db_user_password){
             header("Location: ../laptopmania.php");
             
             $_SESSION['userid'] = $db_user_id;
@@ -63,6 +56,7 @@ header('Content-Type: application/json');
             $_SESSION['cardnumber'] = $db_card_number;
             $_SESSION['expdate'] = $db_expiration_date;
             
+            $_SESSION['login_err'] = '';
             
             $_SESSION['logged'] = true;
 
