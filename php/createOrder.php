@@ -23,6 +23,8 @@ if(isset( $_POST['paymentMethod'], $_POST['products'], $_POST['totalPrice'], $_P
 
         attachProductToOrder($connection, $order_id, $decodedProducts);
         attachPaymentToOrder ($connection, $order_id, $user_id, $decodedPaymentMethod, $totalPrice);
+
+        exit('success');
     } else if($registered === 'false'){
         $user = $_POST['user']; 
         $decodedUser = json_decode($user);
@@ -32,7 +34,7 @@ if(isset( $_POST['paymentMethod'], $_POST['products'], $_POST['totalPrice'], $_P
         $order_id = createOrder($connection, $totalPriceAndDelivery, $user_id);
         attachProductToOrder($connection, $order_id, $decodedProducts);
         attachPaymentToOrder ($connection, $order_id, $user_id, $decodedPaymentMethod, $totalPrice);
-       
+        exit('success');
     }
     
 };

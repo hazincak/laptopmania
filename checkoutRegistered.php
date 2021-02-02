@@ -6,6 +6,7 @@ if (!isset($_SESSION)){
  include "includes/header.php";   
  include "includes/navbar.php"; 
  include "includes/connectDb.php";
+ include "includes/spinner.php";
 
  $session_logged=(isset($_SESSION['logged']))?$_SESSION['logged']: ''; 
  $session_fullname=(isset($_SESSION['fullname']))?$_SESSION['fullname']: ''; 
@@ -135,6 +136,7 @@ $(function(){
         )
 })
 $('.js--order-confirmation').click(function(){
+  $('#overlay').fadeIn();
   const fullname = $('#fullname').text();
   const username = $('#username').text();
   const city = $('#city').text();
@@ -174,12 +176,16 @@ function createOrderAsRegistered(email, paymentMethod, products, totalPrice, reg
             },
     
         success: function(response){    
-          alert('thank you for your order')
-          localStorage.clear();
+              if(response ==='success'){
+                localStorage.clear();
+                checkBasketState();
+                $('#overlay').fadeOut();
+                window.location.href = "./successfullCheckout.php";
+              }
             },
     
         error: function(){
-    
+        
             }
         });
 }

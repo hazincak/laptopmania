@@ -14,12 +14,6 @@
                             <h5 class="text-center" >CHOOSE A CATEGORY</h5>
                             </a>
                             <hr>
-                            <!-- <a class="text-center list-group-item list-group-item-action option" id="business-laptops" data-value="SELECT * FROM laptops WHERE laptop_screenSize < '15.6'" ><b>Business laptops</b></a>
-                            <a class="text-center list-group-item list-group-item-action option" id="laptops" data-value="SELECT * FROM laptops WHERE laptop_type = 'Laptop'" ><b>Laptops</b></a>
-                            <a class="text-center list-group-item list-group-item-action option" id="gaming-laptops" data-value="SELECT * FROM laptops WHERE laptop_type = 'Gaming laptop'"><b>Gaming laptops</b></a>
-                            <a class="text-center list-group-item list-group-item-action option" id="macbooks" data-value="SELECT * FROM laptops WHERE laptop_OS = 'macOS Catalina'"><b>Macbooks</b></a>
-                            <a class="text-center list-group-item list-group-item-action option" id="discount" data-value="SELECT * FROM laptops WHERE laptop_type = 'Discounted laptop'" ><b>Discounted laptops</b></a>
-                             -->
                             <a class="text-center list-group-item list-group-item-action option js--option" id="business-laptops"  onclick="setOption(this.text)" ><b>Business laptops</b></a>
                             <a class="text-center list-group-item list-group-item-action option js--option" id="laptops" onclick="setOption(this.text)"><b>Laptops</b></a>
                             <a class="text-center list-group-item list-group-item-action option js--option" id="gaming-laptops" onclick="setOption(this.text)"><b>Gaming laptops</b></a>

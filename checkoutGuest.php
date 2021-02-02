@@ -2,6 +2,7 @@
 include "includes/header.php";   
 include "includes/navbar.php"; 
 include "includes/connectDb.php";
+include "includes/spinner.php";
 ?> 
 <div class="container-fluid">
 
@@ -184,7 +185,7 @@ $(function(){
 })
 
 $('.js--confirm-details-and-order').click(function(){
-
+    $('#overlay').fadeIn();
     const fullname = $('input[name=fullname]').val();
     const city = $('input[name=city]').val();
     const street = $('input[name=street]').val();
@@ -194,7 +195,7 @@ $('.js--confirm-details-and-order').click(function(){
     const email = $('input[name=email]').val();
     
 
-    const card_type = $('input[name=cardtype]').val();
+    const card_type = $('select[name=cardtype]').val();
     const card_name = $('input[name=cardname]').val();
     const card_number = $('input[name=cardnumber]').val();
     const card_expiration_month = $('select[name=expirationmonth]').val();
@@ -223,6 +224,7 @@ $('.js--confirm-details-and-order').click(function(){
 })
 
 function createOrderAsGuest(user, paymentMethod, products, totalPrice, registered){
+    
     $.ajax({
         url: "php/createOrder.php",
         type:"POST",
@@ -235,8 +237,14 @@ function createOrderAsGuest(user, paymentMethod, products, totalPrice, registere
             },
     
         success: function(response){    
-          alert('thank you for your order guest')
-          localStorage.clear();
+          if(response ==='success'){
+            localStorage.clear();
+            checkBasketState();
+            $('#overlay').fadeOut();
+            window.location.href = "./successfullCheckout.php";
+          }
+         
+
             },
     
         error: function(){

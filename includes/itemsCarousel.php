@@ -14,7 +14,7 @@
                 </div>
         </div>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
+              <div class="carousel-inner" style="width:100%; height: 100% !important;">
                   <?php
                     $isFirst = true;
                     while($row = mysqli_fetch_assoc ($result)){

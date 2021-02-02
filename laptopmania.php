@@ -56,7 +56,7 @@ session_start();
     <!--Reviews-->    
         <section class="review js--section-review">
             <div id="review-carousel" class="carousel slide" data-ride="false">
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="width:100%; height: 500px !important;">
                   <div class="carousel-item active">
                     <h2>Great value here on electronics.  Bought my laptop here.</h2>
                     <img class="reviewer-image" src="img/reviewer1.jpg" alt="lady-profile">
