@@ -24,7 +24,7 @@ session_start();
   include "includes/navbar.php";  ?>
 
     <!-- Title (navbar) -->
-        <section class="title">
+        <section class="title-section">
             <div class="container h-100">
                 <div class="row align-items-center h-100">
                     <div class="col-md-12">
@@ -38,7 +38,7 @@ session_start();
             </div>
         </section>
     <!-- Create account -->
-        <section class="create-account js--section-create-account">
+        <section class="create-account-section js--section-create-account">
         </section>     
     <!-- Discounted items carousel -->
         <?php include "includes/itemsCarousel.php" ?>
@@ -49,12 +49,12 @@ session_start();
         <?php include "includes/shopSection.php" ?>       
   
     <!-- Checkout -->
-        <section class="checkout js--section-checkout">
+        <section class="checkout-section js--section-checkout">
         </section>
   
     
     <!--Reviews-->    
-        <section class="review js--section-review">
+        <section class="review-section js--section-review">
             <div id="review-carousel" class="carousel slide" data-ride="false">
                 <div class="carousel-inner" style="width:100%; height: 500px !important;">
                   <div class="carousel-item active">

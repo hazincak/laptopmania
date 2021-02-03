@@ -1,4 +1,4 @@
-<section class="shop js--section-shop">
+<section class="shop-section js--section-shop">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">

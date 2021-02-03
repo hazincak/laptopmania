@@ -165,7 +165,7 @@ $(function(){
   const delivery = 3.00;
   for(let item of cart){
     $('.js--summary-products').append(
-           `<div class="summary-item"> 
+           `<div class="item-capsule"> 
              <div class="d-flex flex-fill flex-row align-items-center justify-content-around">
                <div class='p-2'><b>${item.item_name}</b></div>
                <img src='img/laptops/${item.item_name}.jpg' class='laptop-img-summary'>

@@ -9,7 +9,7 @@ include "../includes/spinner.php";
     <form action="php/createAccount.php" method="post" >    
         <h2 class="text-center">Create account</h2>
         <h4 class="text-center">Complete and confirm your details</h4>
-        <div class="create-account-form">    
+        <div>    
           <div class="row justify-content-center">
               <div class="col-sm-5">
                   <div class="form-group input-group">

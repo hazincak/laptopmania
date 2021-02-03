@@ -1,13 +1,22 @@
 html {
   font-size: 16px; }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  height: auto;
-  min-height: 100%;
-  box-sizing: border-box; }
+  height: auto; }
 
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat"; }
 
@@ -54,55 +63,6 @@ p {
   position: relative;
   top: 5px;
   color: #393e46; }
-
-/* Buttons */
-.btn {
-  margin: 0.5rem; }
-
-.btn-primary {
-  border-radius: 200px;
-  padding: 10px 30px;
-  background-color: #00adb5;
-  border-color: #f4f4f4;
-  -webkit-border-radius: 200px;
-  -moz-border-radius: 200px;
-  -ms-border-radius: 200px;
-  -o-border-radius: 200px; }
-
-.btn-primary:hover {
-  background-color: #393e46;
-  border-color: #00adb5; }
-
-.btn-secondary {
-  margin: 0;
-  background-color: #00adb5;
-  border-color: #f4f4f4; }
-
-.btn-secondary:hover {
-  background-color: #393e46;
-  border-color: #00adb5; }
-
-.btn-dark {
-  margin: 0; }
-
-.btn-outline-light {
-  margin: 0; }
-
-.btn-danger.js--logout-account-button {
-  margin: 0; }
-
-/* Title section */
-.title {
-  background-color: #222831;
-  color: var #f4f4f4;
-  height: 90vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url(../img/laptops.png);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; }
-
-.title .container-fluid {
-  padding: 3% 15% 20%; }
 
 /* Main  navBar */
 .navbar {
@@ -164,6 +124,110 @@ p {
   color: #f4f4f4;
   padding-left: 2rem; }
 
+/* Title section */
+.title-section {
+  background-color: #222831;
+  color: #f4f4f4;
+  height: 90vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url(../img/laptops.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; }
+
+/* Trending now */
+.discount-section {
+  background-color: #e9e5e5;
+  color: #222831;
+  min-height: 85vh; }
+
+.review-section {
+  padding: 7% 15%;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url(../img/review.jpg);
+  color: #f4f4f4;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; }
+
+/* Checkout section */
+.checkout-section {
+  background-color: #f4f4f4;
+  color: #222831; }
+
+/* Create account section */
+.create-account-section {
+  background-color: #f4f4f4;
+  color: #222831; }
+
+/* Create account */
+.account-creation-section {
+  background-color: var(--page-color-1);
+  color: #222831;
+  height: 100vh; }
+
+/* Shop section */
+.shop-section {
+  background-color: #f4f4f4; }
+
+/* Buttons */
+.btn {
+  margin: 0.5rem; }
+
+.btn-primary {
+  border-radius: 200px;
+  padding: 10px 30px;
+  background-color: #00adb5;
+  border-color: #f4f4f4;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  -ms-border-radius: 200px;
+  -o-border-radius: 200px; }
+
+.btn-primary:hover {
+  background-color: #393e46;
+  border-color: #00adb5; }
+
+.btn-secondary {
+  margin: 0;
+  background-color: #00adb5;
+  border-color: #f4f4f4; }
+
+.btn-secondary:hover {
+  background-color: #393e46;
+  border-color: #00adb5; }
+
+.btn-dark {
+  margin: 0; }
+
+.btn-outline-light {
+  margin: 0; }
+
+.btn-danger.js--logout-account-button {
+  margin: 0; }
+
+#overlay {
+  background: #ffffff;
+  color: #666666;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 25%;
+  opacity: .80; }
+
+.spinner {
+  margin: 0 auto;
+  height: 64px;
+  width: 64px;
+  animation: rotate 0.8s infinite linear;
+  border: 5px solid #00adb5;
+  border-right-color: transparent;
+  border-radius: 50%; }
+
 /*navBarshopping cart */
 .laptop-img-cart {
   width: 35%;
@@ -172,36 +236,6 @@ p {
 .cart-text {
   color: #222831;
   margin: 0; }
-
-/* Trending now */
-.discount-section {
-  background-color: #e9e5e5;
-  color: #222831;
-  min-height: 100vh; }
-
-.discount-carousel-item {
-  padding: 5% 7%;
-  background-color: #fff;
-  border-radius: 15px; }
-
-.carousel-item {
-  padding: 7% 15%; }
-
-.discount-section .container-fluid {
-  padding: 3% 15% 3%; }
-
-.discount-section h2 {
-  margin-bottom: 0px; }
-
-.laptop-img-jumbotron {
-  width: 50%; }
-
-/* Shop section */
-.shop {
-  background-color: #f4f4f4; }
-
-.shop .container-fluid {
-  padding: 3% 10% 7%; }
 
 .list-group {
   padding: 1rem;
@@ -242,19 +276,10 @@ p {
   -o-border-radius: 20px;
   border: 1px solid #393e46; }
 
-.list-laptops {
-  padding: 1rem;
-  /* border: 3px solid $page-color-4; */
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px; }
-
 .option {
   cursor: pointer; }
 
-.d-block {
+.item-capsule {
   background-color: #fff;
   margin-bottom: 5px;
   border-radius: 10px;
@@ -264,25 +289,27 @@ p {
   -o-border-radius: 10px;
   border: 1px solid #00adb5; }
 
-.d-block:hover {
+.item-capsule:hover {
   border: 1px solid #222831; }
 
 .laptop-img-shop {
   width: 20%; }
 
-.laptop-img:hover {
-  opacity: .5; }
+.laptop-img-summary {
+  width: 10%; }
 
-/* Reviews section */
-.review {
-  padding: 7% 15%;
+.footer {
+  padding: 3% 5%;
   text-align: center;
-  /* background-color: $page-color-3; */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url(../img/review.jpg);
-  color: #f4f4f4;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; }
+  background-color: #222831; }
+
+footer p {
+  color: #393e46;
+  text-align: center;
+  font-size: 80%; }
+
+footer p:hover {
+  color: #00adb5; }
 
 .reviewer-image {
   width: 10%;
@@ -294,102 +321,20 @@ p {
   -o-border-radius: 100%;
   margin: 20px; }
 
-/* footer section */
-.footer {
-  padding: 3% 5%;
-  text-align: center;
-  background-color: #222831; }
-
-.social-icon {
-  margin: 20px 20px;
-  transition: color 0,2;
-  font-size: 200%;
-  color: #393e46; }
-
-.fa-facebook:hover {
-  color: #3b5998; }
-
-.fa-twitter:hover {
-  color: #00acee; }
-
-.fa-instagram:hover {
-  color: #3f729b; }
-
-footer p {
-  color: #393e46;
-  text-align: center;
-  font-size: 80%; }
-
-footer p:hover {
-  color: #00adb5; }
-
-/* Checkout section */
-.checkout {
-  background-color: #f4f4f4;
-  color: #222831; }
-
-.checkout-form {
-  padding: 1% 5% 5% 5%; }
-
-/* Create account section */
-.create-account {
-  background-color: #f4f4f4;
-  color: #222831; }
-
-.create-account-form {
-  padding: 1% 5% 5% 5%; }
-
-/* Order summary */
-.summary-item {
-  border: 1px solid #00adb5;
-  margin: 5px;
+.discount-carousel-item {
+  padding: 5% 7%;
   background-color: #fff;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px; }
+  border-radius: 15px; }
 
-.laptop-img-summary {
-  width: 10%; }
+.carousel-item {
+  padding: 7% 15%; }
 
-/* Create account */
-.account-creation {
-  background-color: var(--page-color-1);
-  color: #222831;
-  height: 100vh; }
+.carousel-img {
+  width: 450px;
+  height: 450px; }
 
 .input-append {
   background-color: #fff; }
 
 .form-control-border {
   border-right: 0 solid transparent; }
-
-#overlay {
-  background: #ffffff;
-  color: #666666;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 5000;
-  top: 0;
-  left: 0;
-  float: left;
-  text-align: center;
-  padding-top: 25%;
-  opacity: .80; }
-
-.spinner {
-  margin: 0 auto;
-  height: 64px;
-  width: 64px;
-  animation: rotate 0.8s infinite linear;
-  border: 5px solid #00adb5;
-  border-right-color: transparent;
-  border-radius: 50%; }
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }

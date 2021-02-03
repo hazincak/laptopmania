@@ -1,0 +1,43 @@
+.list-group {
+    padding: 1rem;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+.list-group .disabled{
+    background-color: $page-color-4;
+    color: $page-color-1;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.list-group .list-group-item-action{
+    background-color: #fff;
+    margin:3px 3px ;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    border: 1px solid $page-color-2;
+}
+.list-group .list-group-item-action:hover{
+    border: 1px solid $page-color-3
+}
+.list-group .active{
+    background-color: $page-color-2;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    border: 1px solid $page-color-3;
+}
+
+.option{
+    cursor: pointer;
+}
