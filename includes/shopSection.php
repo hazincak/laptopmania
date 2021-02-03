@@ -1,5 +1,5 @@
 <section class="shop js--section-shop">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h2 >Pick up your new laptop.</h2>

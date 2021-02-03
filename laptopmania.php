@@ -30,7 +30,7 @@ session_start();
                     <div class="col-md-12">
                         <h1>Welcome to LaptopMania</h1>
                         <hr>
-                        <p>The best place to buy a new laptop.</p>
+                        <p class="mb-4">The best place to buy a new laptop.</p>
                         <a class="btn btn-primary btn-sm js--title-shop-button" href="#" role="button">Shop</a>
                         <a class="btn btn-primary btn-sm js--title-review-button" href="#" role="button">Reviews</a>
                     </div>
