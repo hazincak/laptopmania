@@ -76,7 +76,7 @@ function populateShopSectionOnPageLoad(){
 function populateProducts(items){
     for (item of items){
         $('#item-capsule').append(`
-         <span class='d-block p-2'> <h5 class='js--laptop-name'><b>${item.laptop_name}</b></h5>
+         <span class='d-block item-capsule p-2'> <h5 class='js--laptop-name'><b>${item.laptop_name}</b></h5>
              <hr>
               <div class='d-flex flex-row align-items-center justify-content-around'>
                  <div class='p-2'><b>Screen size: </b>&nbsp${item.laptop_screenSize}<br><b>Processor: </b>&nbsp${item.laptop_CPU}<br><b>RAM: </b>&nbsp${item.laptop_RAM}<br><b>Storage: </b>&nbsp${item.laptop_storage}<br><b>Graphic card: </b>&nbsp${item.laptop_graphicsCard}</div>
@@ -111,7 +111,7 @@ function populatePagination(paginationCount){
 
 function appendToBasket(product){
     $('.js--dropdown-cart ').append(`
-        <div class='d-block p-2 shopping-cart-pill js--shopping-cart-pill'>\
+        <div class='d-block item-capsule p-2 js--shopping-cart-pill'>\
             <p class='font-weight-bold cart-text js--laptop-name'>${product.item_name}</p>\
             <div class='d-flex flex-fill flex-row align-items-center justify-content-around'>\
                 <img src='img/laptops/${product.item_name}.jpg' class='laptop-img-cart'>\

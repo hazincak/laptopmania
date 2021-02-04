@@ -35,7 +35,7 @@ if(isset($_POST['createaccount'])){
     
     }else{
         echo "
-        <section class = 'account-creation'>
+        <section class = 'account-creation-section'>
     
     <h2 class='text-center'>Welcome to Laptopmania</h2>
     <h4 class='text-center header'>Your account has been created</h4>

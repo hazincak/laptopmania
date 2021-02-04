@@ -1,0 +1,23 @@
+{
+  "name": "laptopmania",
+  "version": "1.0.0",
+  "description": "e-commerce website-practice",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hazoja/laptopmania.git"
+  },
+  "author": "Jan H.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hazoja/laptopmania/issues"
+  },
+  "homepage": "https://github.com/hazoja/laptopmania#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
+}

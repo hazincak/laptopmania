@@ -1,0 +1,22 @@
+.item-capsule{
+    background-color: #fff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: 1px solid $page-color-2;
+}
+.item-capsule:hover{
+    border: 1px solid $page-color-4;
+}
+
+
+.laptop-img-shop{
+    width: 20%;
+}
+
+.laptop-img-summary{
+    width: 10%;
+ }

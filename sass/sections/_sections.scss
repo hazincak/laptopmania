@@ -1,0 +1,51 @@
+/* Title section */
+.title-section{
+    background-color: $page-color-4;
+    color: $page-color-1;
+    height: 90vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.8)), url(../img/laptops.png);
+    background-size: cover;
+	background-position: center;
+    background-attachment: fixed;
+}
+
+/* Trending now */
+.discount-section{
+    background-color: $page-color-5;
+    color: $page-color-4;
+    min-height: 85vh;
+}
+
+.review-section{
+    padding: 7% 15%;
+     text-align: center;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.8)), url(../img/review.jpg);
+     color: $page-color-1;
+     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+ }
+
+ /* Checkout section */
+.checkout-section{
+    background-color: $page-color-1;
+    color: $page-color-4;
+}
+
+/* Create account section */
+.create-account-section{
+    background-color: $page-color-1;
+    color: $page-color-4;
+}
+
+/* Create account */
+.account-creation-section{
+    background-color: var(--page-color-1);
+    color: $page-color-4;
+    height: 100vh;
+}
+
+ /* Shop section */
+ .shop-section{
+    background-color: $page-color-1;
+}
