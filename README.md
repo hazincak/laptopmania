@@ -1,4 +1,8 @@
+# Laptopmania
+
 The laptomania website has been developed for the Final project of Web Application Development subject in Higher Diplona in Software Development at GMIT.
+
+## How to run
 
 This website is working with SQL relational database, therefore its tables need to be created before running the website. To process this step, create a database with the name "laptomania" on phpMyAdmin, copy a content of "laptopmania.sql" file. Paste and run the content on "laptopmania" database in phpMyAdmin SQL window. 
 
