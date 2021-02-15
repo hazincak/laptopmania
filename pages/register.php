@@ -6,7 +6,7 @@ include "../includes/spinner.php";
 ?>
 
 <div class= "container">
-    <form action="php/createAccount.php" method="post" >    
+    <form action="../php/createAccount.php" method="post" >    
         <h2 class="text-center">Create account</h2>
         <h4 class="text-center">Complete and confirm your details</h4>
         <div>    

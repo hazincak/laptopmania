@@ -12,6 +12,8 @@
         $cleanLoginUsername = mysqli_real_escape_string($connection, $loginUsername);
         $cleanLoginPassword = mysqli_real_escape_string($connection, $loginPassword);
 
+        
+
         $query = "SELECT * FROM users WHERE user_name = '{$cleanLoginUsername}' AND registered = true";
         $result = mysqli_query($connection, $query);
             if(!$result){
@@ -34,12 +36,12 @@
                 $db_expiration_date = $row['expiration_date'];
             }
 
-        if($cleanLoginUsername !== $db_user_name || $cleanLoginPassword !== $db_user_password){
+        if($cleanLoginUsername !== $db_user_name || !password_verify($cleanLoginPassword, $db_user_password)){
             header("Location: ../laptopmania.php");
             $_SESSION['logged'] = false;
             $_SESSION['login_err'] = 'Invalid password or username';
             
-        }else if ($cleanLoginUsername == $db_user_name && $cleanLoginPassword == $db_user_password){
+        }else if ($cleanLoginUsername == $db_user_name && password_verify($cleanLoginPassword, $db_user_password)){
             header("Location: ../laptopmania.php");
             
             $_SESSION['userid'] = $db_user_id;

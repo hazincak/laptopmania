@@ -30,7 +30,7 @@ session_start();
                     <div class="col-md-12">
                         <h1>Welcome to LaptopMania</h1>
                         <hr>
-                        <p class="mb-4">The best place to buy a new laptop.</p>
+                        <h4 class="mb-4">The best place to buy a new laptop.</h4>
                         <a class="btn btn-primary btn-sm js--title-shop-button" href="#" role="button">Shop</a>
                         <a class="btn btn-primary btn-sm js--title-review-button" href="#" role="button">Reviews</a>
                     </div>
@@ -54,7 +54,7 @@ session_start();
   
     
     <!--Reviews-->    
-        <section class="review-section js--section-review">
+        <section class=" review-section js--section-review">
             <div id="review-carousel" class="carousel slide" data-ride="false">
                 <div class="carousel-inner" style="width:100%; height: 500px !important;">
                   <div class="carousel-item active">
