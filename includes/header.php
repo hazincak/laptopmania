@@ -2,8 +2,6 @@
 <?php
 
 define( 'ROOT_PATH', 'http://localhost/laptopmania' );
-
-
 ?> 
 <html lang="en">
   <head>

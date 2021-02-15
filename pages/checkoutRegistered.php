@@ -4,7 +4,6 @@ if (!isset($_SESSION)){
 }
 
 include "../includes/header.php";   
-include "../includes/navbar.php"; 
 include "../includes/connectDb.php";
 include "../includes/spinner.php";
 
