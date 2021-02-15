@@ -4,10 +4,12 @@ function populateBasketDOM(productsInBasket){
         }
 }
 function updateLocStoragePriceOnDelete(deletedItemPrice){
-    totalPrice = JSON.parse(localStorage.getItem('totalPrice')); 
-    totalPrice = totalPrice - deletedItemPrice;
-    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
-    return totalPrice;
+    let updatedPrice = JSON.parse(localStorage.getItem('totalPrice')); 
+    updatedPrice = Number(updatedPrice) -  Number(deletedItemPrice);
+    updatedPrice = (Number (updatedPrice)).toFixed(2);
+    console.log("deleted update:" + updatedPrice);
+    localStorage.setItem('totalPrice', JSON.stringify(updatedPrice));
+    return updatedPrice;
 }
 
 function removeLocStorageBasketItemOnDelete(id){
@@ -33,16 +35,18 @@ function updateLocStorageBasketOnAddToBasket(id ,name, price){
     localStorage.setItem('cart', JSON.stringify(tempCart));
 }
 
-function updateLocStorageTotalPriceOnAddToBasket(price){
-    let updatedTotalPrice;
+function updateLocStorageTotalPriceOnAddToBasket(itemPrice){
+    let updatedTotalPrice = 0;
     currentTotalPrice = JSON.parse(localStorage.getItem('totalPrice'));
         if(currentTotalPrice !== null){
-            updatedTotalPrice = currentTotalPrice;
-            updatedTotalPrice = updatedTotalPrice + item_price;
+            updatedTotalPrice =  Number (currentTotalPrice) + Number(itemPrice);
+            updatedTotalPrice = (Number (updatedTotalPrice)).toFixed(2);
         }else{
-            updatedTotalPrice = item_price;
+            updatedTotalPrice = itemPrice;
+            updatedTotalPrice =  (Number (updatedTotalPrice)).toFixed(2);
         }
-    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
+       
+    localStorage.setItem('totalPrice', JSON.stringify(updatedTotalPrice));
     return updatedTotalPrice;
 
 }
@@ -139,17 +143,17 @@ function checkBasketState(){
     }
   }
 
-  function toFixed(value, precision) {
-    var precision = precision || 0,
-        power = Math.pow(10, precision),
-        absValue = Math.abs(Math.round(value * power)),
-        result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
+//   function toFixed(value, precision) {
+//     var precision = precision || 0,
+//         power = Math.pow(10, precision),
+//         absValue = Math.abs(Math.round(value * power)),
+//         result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
 
-    if (precision > 0) {
-        var fraction = String(absValue % power),
-            padding = new Array(Math.max(precision - fraction.length, 0) + 1).join('0');
-        result += '.' + padding + fraction;
-    }
-    return result;
-}
+//     if (precision > 0) {
+//         var fraction = String(absValue % power),
+//             padding = new Array(Math.max(precision - fraction.length, 0) + 1).join('0');
+//         result += '.' + padding + fraction;
+//     }
+//     return result;
+// }
 

@@ -1,12 +1,11 @@
 <?php 
 include "../includes/header.php";   
-include "../includes/navbar.php"; 
 include "../includes/connectDb.php";
 include "../includes/spinner.php";
 ?> 
 <div class="container">
 
-        <h2 class="text-center">Complete your details to finish the order</h2>
+        <h2 class="text-center p-5">Complete your details to finish the order</h2>
         
         <div class="row">
             <div class="col-md-5">
