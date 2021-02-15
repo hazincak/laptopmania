@@ -15,12 +15,24 @@
     border-radius: 15px;
 }
 
-.carousel-item{
-    padding: 7% 15%;
-}
+// .carousel-item{
+//     padding: 2% 15%;
+// }
 
 .carousel-img{
      width: 450px;
      height: 450px;
     
+     @include respond(phone) {
+        width: 200px;
+        height: 200px;
+    }
+    @include respond(tab-port) { 
+        width: 250px;
+        height: 250px;
+    }
+    @include respond(big-desktop) {
+        width: 550px;
+        height: 550px;
+    }
 }

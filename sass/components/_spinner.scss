@@ -17,8 +17,12 @@
       margin: 0 auto;
       height: 64px;
       width: 64px;
-      animation: rotate 0.8s infinite linear;
+      animation: spin 1s linear infinite;
       border: 5px solid $page-color-2;
       border-right-color: transparent;
       border-radius: 50%;
+  }
+
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
   }

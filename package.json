@@ -4,7 +4,7 @@
   "description": "e-commerce website-practice",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/styles.css -w"
+    "compile-sass": "node-sass sass/main.scss css/styles.css -w"
   },
   "repository": {
     "type": "git",

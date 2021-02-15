@@ -1,17 +1,17 @@
 html {
   font-size: 16px; }
-  @media (max-width: 37.5em) {
+  @media (max-width: 600px) {
     html {
-      font-size: 50%; } }
-  @media (max-width: 75em) {
+      font-size: 8px; } }
+  @media (max-width: 1200px) {
     html {
-      font-size: 56.25%; } }
-  @media (max-width: 56.25em) {
+      font-size: 12px; } }
+  @media (max-width: 900px) {
     html {
-      font-size: 50%; } }
-  @media (min-width: 112.5em) {
+      font-size: 10px; } }
+  @media (min-width: 1200px) {
     html {
-      font-size: 75%; } }
+      font-size: 18px; } }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -73,12 +73,28 @@ p {
 .navbar-brand {
   font-size: 35px;
   font-weight: bold; }
+  @media (max-width: 600px) {
+    .navbar-brand {
+      font-size: 20px; } }
+  @media (max-width: 1200px) {
+    .navbar-brand {
+      font-size: 25px; } }
+  @media (max-width: 900px) {
+    .navbar-brand {
+      font-size: 22px; } }
 
-#navbar-icon {
-  display: inline-block;
-  font-size: 20px;
-  color: #393e46;
-  /* padding-left: 2rem;  */ }
+.navbar-toggler {
+  font-size: 30px;
+  border: none; }
+  @media (max-width: 600px) {
+    .navbar-toggler {
+      font-size: 20px; } }
+  @media (max-width: 1200px) {
+    .navbar-toggler {
+      font-size: 28px; } }
+  @media (max-width: 900px) {
+    .navbar-toggler {
+      font-size: 25px; } }
 
 #navbarDropdown {
   font-size: 30px;
@@ -87,7 +103,7 @@ p {
 
 .dropdown-menu {
   padding: 1rem;
-  color: var(--page-color-1);
+  color: #f4f4f4;
   background-color: #222831;
   border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -101,7 +117,7 @@ p {
 /* Sticky  navBar */
 .sticky {
   position: fixed;
-  padding: 1rem 2.5rem;
+  padding: 10px 32px;
   top: 0;
   left: 0;
   width: 100%;
@@ -109,18 +125,27 @@ p {
   z-index: 9999; }
 
 .sticky .navbar-brand {
-  font-size: 3.5rem;
+  font-size: 35px;
   font-weight: bold;
   color: #f4f4f4; }
+  @media (max-width: 600px) {
+    .sticky .navbar-brand {
+      font-size: 20px; } }
+  @media (max-width: 1200px) {
+    .sticky .navbar-brand {
+      font-size: 25px; } }
+  @media (max-width: 900px) {
+    .sticky .navbar-brand {
+      font-size: 22px; } }
 
 .sticky #navbar-icon {
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 20px;
   color: #f4f4f4;
   padding-left: 2rem; }
 
 .sticky #navbarDropdown {
-  font-size: 2.5rem;
+  font-size: 30px;
   color: #f4f4f4;
   padding-left: 2rem; }
 
@@ -138,10 +163,10 @@ p {
 .discount-section {
   background-color: #e9e5e5;
   color: #222831;
-  min-height: 85vh; }
+  min-height: 100vh; }
 
 .review-section {
-  padding: 7% 15%;
+  padding: 8rem 10rem;
   text-align: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8)), url(../img/review.jpg);
   color: #f4f4f4;
@@ -204,29 +229,6 @@ p {
 
 .btn-danger.js--logout-account-button {
   margin: 0; }
-
-#overlay {
-  background: #ffffff;
-  color: #666666;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 5000;
-  top: 0;
-  left: 0;
-  float: left;
-  text-align: center;
-  padding-top: 25%;
-  opacity: .80; }
-
-.spinner {
-  margin: 0 auto;
-  height: 64px;
-  width: 64px;
-  animation: rotate 0.8s infinite linear;
-  border: 5px solid #00adb5;
-  border-right-color: transparent;
-  border-radius: 50%; }
 
 /*navBarshopping cart */
 .laptop-img-cart {
@@ -326,12 +328,48 @@ footer p:hover {
   background-color: #fff;
   border-radius: 15px; }
 
-.carousel-item {
-  padding: 7% 15%; }
-
 .carousel-img {
   width: 450px;
   height: 450px; }
+  @media (max-width: 600px) {
+    .carousel-img {
+      width: 200px;
+      height: 200px; } }
+  @media (max-width: 900px) {
+    .carousel-img {
+      width: 250px;
+      height: 250px; } }
+  @media (min-width: 1200px) {
+    .carousel-img {
+      width: 550px;
+      height: 550px; } }
+
+#overlay {
+  background: #ffffff;
+  color: #666666;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 25%;
+  opacity: .80; }
+
+.spinner {
+  margin: 0 auto;
+  height: 64px;
+  width: 64px;
+  animation: spin 1s linear infinite;
+  border: 5px solid #00adb5;
+  border-right-color: transparent;
+  border-radius: 50%; }
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg); } }
 
 .input-append {
   background-color: #fff; }

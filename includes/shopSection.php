@@ -8,7 +8,7 @@
                 </div>
                 <div class="row">
                 
-                    <div class="col-md-3">
+                    <div class="col-lg-3">
                         <div class="list-group">
                             <a class="list-group-item list-group-item disabled flex-fill">
                             <h5 class="text-center" >CHOOSE A CATEGORY</h5>
@@ -22,7 +22,7 @@
                         
                         </div>  
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-lg-9">
                         <div class="list-laptops" id="item-capsule">
                             
                         </div>
