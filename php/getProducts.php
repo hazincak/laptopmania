@@ -26,8 +26,8 @@ if(isset($_GET['option'], )){
         case "Business laptops":
           $q = "SELECT * FROM laptops WHERE laptop_screenSize < '15.6'";
           break;
-        case "Laptops":
-          $q = "SELECT * FROM laptops WHERE laptop_type = 'Laptop'";
+        case "All laptops":
+          $q = "SELECT * FROM laptops";
           break;
         case "Gaming laptops":
           $q = "SELECT * FROM laptops WHERE laptop_type = 'Gaming laptop'";
@@ -35,7 +35,7 @@ if(isset($_GET['option'], )){
         case "Macbooks":
           $q = "SELECT * FROM laptops WHERE laptop_OS = 'macOS Catalina'";
           break;
-        case "Discounted laptop":
+        case "Discounted laptops":
           $q = "SELECT * FROM laptops WHERE laptop_type = 'Discounted laptop'";
             break;    
         default:
