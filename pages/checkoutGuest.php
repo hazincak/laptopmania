@@ -238,9 +238,8 @@ function createOrderAsGuest(user, paymentMethod, products, totalPrice, registere
         success: function(response){    
           if(response ==='success'){
             localStorage.clear();
-            checkBasketState();
             $('#overlay').fadeOut();
-            window.location.href = "successfullCheckout.php";
+            window.location.href = "successfulCheckout.php";
           }
          
 

@@ -175,11 +175,12 @@ function createOrderAsRegistered(email, paymentMethod, products, totalPrice, reg
             },
     
         success: function(response){    
-              if(response ==='success'){
+              if(response == 'success'){
+                console.log('here')
                 localStorage.clear();
-                checkBasketState();
+                // checkBasketState();
                 $('#overlay').fadeOut();
-                window.location.href = "successfullCheckout.php";
+                window.location.href = "successfulCheckout.php";
               }
             },
     
