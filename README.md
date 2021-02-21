@@ -1,9 +1,11 @@
 # Laptopmania
-
-The laptomania website has been developed for the Final project of Web Application Development subject in Higher Diplona in Software Development at GMIT.
+Website created for the final assessment of Web Application Development module at GMIT.
 
 ## How to run
 
-This website is working with SQL relational database, therefore its tables need to be created before running the website. To process this step, create a database with the name "laptomania" in phpMyAdmin, copy a content of "laptopmania.sql" file. Paste and run the content on "laptopmania" database in phpMyAdmin SQL window. 
+This website keeps its data in a SQL relational database. Therefore, its tables need to be created before running this website. To process this step, create a database with the name “laptopmania” in phpMyAdmin, copy the content of *laptomania.sql* file, and then paste and run the content on the *laptopmania* database in phpMyAdmin SQL window. 
 
-Before running this website copy and paste the laptopmania folder to htdocs folder which is located in your XAMPP folder. The usual path for the Windows 10 users is: C:\xampp\htdocs. Start Apache and MySQL module in your XAMPP Control Panel access the website http://localhost/laptopmania/laptopmania.php from your browser.
+Before running this website, copy and paste the *laptopmania* folder to the *htdocs* folder located in your XAMPP folder. The usual path for the Windows 10 users is *C:\xampp\htdocs*.
+
+Then, start the Apache and MySQL modules in your XAMPP Control Panel and access this website *http://localhost/laptopmania/laptopmania.php* from your browser window. 
+
