@@ -169,7 +169,7 @@ $(function(){
                <div class='p-2'><b>${item.item_name}</b></div>
                <img src='../img/laptops/${item.item_name}.jpg' class='laptop-img-summary'>
                <div class='d-flex flex-column'>
-               <div class='p-2'><h4 class='js--laptop-price'>€${toFixed(item.item_price, 2)}</div>
+               <div class='p-2'><h4 class='js--laptop-price'>€${item.item_price}</div>
              </div>
            </div><br>`
     )}
